@@ -1,0 +1,117 @@
+/* CSS HEX */
+:root {
+	--gray: #7a7d7dff;
+	--rich-black: #0c1618ff;
+	--ivory: #fffce8ff;
+	--claret: #990d35ff;
+	--claretvilla: #490024ff;
+	--rusty-red: #d52941ff;
+	--lightcoral: #E37884ff;
+	--mistyrose: #F8DDE0ff;
+	--white: #fff;
+	--transition-speed: 1s;
+}
+
+body {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: var(--ivory);
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.baseclass {
+	height: 100vh;
+	font-family: 'Roboto', sans-serif;
+	color: var(--white);
+	background-color: var(--ivory);
+/*	padding: 20px;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.landing {
+	display: flex;
+	background-color: var(--claret);
+	height:95%;
+	width: 95%;
+}
+
+.landingnav {
+	display: flex;
+	flex-basis: 100%;
+	height: 100px;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 36px;
+	list-style-type: none;
+}
+
+.box-container {
+    height: 100%;
+    padding: 20px 200px;
+    display: flex;
+   	align-items: center;
+	justify-content: center;
+	background-color: #dddddd;
+	font-family: Arial;
+}
+
+form {
+	background-color: #cccccc;
+}
+
+.mainrow-1 {
+	margin: 0px 0px 10px 0px;
+}
+
+.mainrow-2 {
+	margin: 0px;
+}
+
+.mainrow-3 {
+	margin: 10px 0px 0px 0px;
+}
+
+.puzzle-row {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.puzzle-item {
+	margin: 2px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.puzzle-item-m {
+	margin: 2px;
+	margin-right: 10px;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+
+input {
+	height: 40px;
+	width: 40px;
+	font-size: 28px;
+	color: black;
+	text-align: center;
+/*	border-radius: 1px;*/
+/*	background-color: #;*/
+}
+
+.check-solution input {
+	width: 100%;
+}

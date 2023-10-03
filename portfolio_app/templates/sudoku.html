@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class = box-container>
+	
+	<form method="POST" action="/">
+
+		{{ form.csrf_token }}
+
+		<div class = "mainrow-1">
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field11 }}</div>
+				<div class = puzzle-item>{{ form.field12 }}</div>
+				<div class = puzzle-item-m>{{ form.field13 }}</div>
+				<div class = puzzle-item>{{ form.field14 }}</div>
+				<div class = puzzle-item>{{ form.field15 }}</div>
+				<div class = puzzle-item-m>{{ form.field16 }}</div>
+				<div class = puzzle-item>{{ form.field17 }}</div>
+				<div class = puzzle-item>{{ form.field18 }}</div>
+				<div class = puzzle-item>{{ form.field19 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field21 }}</div>
+				<div class = puzzle-item>{{ form.field22 }}</div>
+				<div class = puzzle-item-m>{{ form.field23 }}</div>
+				<div class = puzzle-item>{{ form.field24 }}</div>
+				<div class = puzzle-item>{{ form.field25 }}</div>
+				<div class = puzzle-item-m>{{ form.field26 }}</div>
+				<div class = puzzle-item>{{ form.field27 }}</div>
+				<div class = puzzle-item>{{ form.field28 }}</div>
+				<div class = puzzle-item>{{ form.field29 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field31 }}</div>
+				<div class = puzzle-item>{{ form.field32 }}</div>
+				<div class = puzzle-item-m>{{ form.field33 }}</div>
+				<div class = puzzle-item>{{ form.field34 }}</div>
+				<div class = puzzle-item>{{ form.field35 }}</div>
+				<div class = puzzle-item-m>{{ form.field36 }}</div>
+				<div class = puzzle-item>{{ form.field37 }}</div>
+				<div class = puzzle-item>{{ form.field38 }}</div>
+				<div class = puzzle-item>{{ form.field39 }}</div>
+			</div>
+
+		</div>
+				
+
+		<div class = mainrow-2>
+			
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field41 }}</div>
+				<div class = puzzle-item>{{ form.field42 }}</div>
+				<div class = puzzle-item-m>{{ form.field43 }}</div>
+				<div class = puzzle-item>{{ form.field44 }}</div>
+				<div class = puzzle-item>{{ form.field45 }}</div>
+				<div class = puzzle-item-m>{{ form.field46 }}</div>
+				<div class = puzzle-item>{{ form.field47 }}</div>
+				<div class = puzzle-item>{{ form.field48 }}</div>
+				<div class = puzzle-item>{{ form.field49 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field51 }}</div>
+				<div class = puzzle-item>{{ form.field52 }}</div>
+				<div class = puzzle-item-m>{{ form.field53 }}</div>
+				<div class = puzzle-item>{{ form.field54 }}</div>
+				<div class = puzzle-item>{{ form.field55 }}</div>
+				<div class = puzzle-item-m>{{ form.field56 }}</div>
+				<div class = puzzle-item>{{ form.field57 }}</div>
+				<div class = puzzle-item>{{ form.field58 }}</div>
+				<div class = puzzle-item>{{ form.field59 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field61 }}</div>
+				<div class = puzzle-item>{{ form.field62 }}</div>
+				<div class = puzzle-item-m>{{ form.field63 }}</div>
+				<div class = puzzle-item>{{ form.field64 }}</div>
+				<div class = puzzle-item>{{ form.field65 }}</div>
+				<div class = puzzle-item-m>{{ form.field66 }}</div>
+				<div class = puzzle-item>{{ form.field67 }}</div>
+				<div class = puzzle-item>{{ form.field68 }}</div>
+				<div class = puzzle-item>{{ form.field69 }}</div>
+			</div>
+
+		</div>
+				
+		<div class = mainrow-3>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field71 }}</div>
+				<div class = puzzle-item>{{ form.field72 }}</div>
+				<div class = puzzle-item-m>{{ form.field73 }}</div>
+				<div class = puzzle-item>{{ form.field74 }}</div>
+				<div class = puzzle-item>{{ form.field75 }}</div>
+				<div class = puzzle-item-m>{{ form.field76 }}</div>
+				<div class = puzzle-item>{{ form.field77 }}</div>
+				<div class = puzzle-item>{{ form.field78 }}</div>
+				<div class = puzzle-item>{{ form.field79 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field81 }}</div>
+				<div class = puzzle-item>{{ form.field82 }}</div>
+				<div class = puzzle-item-m>{{ form.field83 }}</div>
+				<div class = puzzle-item>{{ form.field84 }}</div>
+				<div class = puzzle-item>{{ form.field85 }}</div>
+				<div class = puzzle-item-m>{{ form.field86 }}</div>
+				<div class = puzzle-item>{{ form.field87 }}</div>
+				<div class = puzzle-item>{{ form.field88 }}</div>
+				<div class = puzzle-item>{{ form.field89 }}</div>
+			</div>
+
+			<div class = puzzle-row >
+				<div class = puzzle-item>{{ form.field91 }}</div>
+				<div class = puzzle-item>{{ form.field92 }}</div>
+				<div class = puzzle-item-m>{{ form.field93 }}</div>
+				<div class = puzzle-item>{{ form.field94 }}</div>
+				<div class = puzzle-item>{{ form.field95 }}</div>
+				<div class = puzzle-item-m>{{ form.field96 }}</div>
+				<div class = puzzle-item>{{ form.field97 }}</div>
+				<div class = puzzle-item>{{ form.field98 }}</div>
+				<div class = puzzle-item>{{ form.field99 }}</div>
+			</div>
+
+		</div>
+		
+
+		<div class = "check-solution">
+			{{ form.check }}
+			<p>{{ form.is_solved }}</p>
+		</div>
+
+		<div class = "reset-solution"><a href="{{ url_for('sudoku_reset') }}">Reset</a></div>
+	</form>
+	
+</div>
+
+{% endblock %}
