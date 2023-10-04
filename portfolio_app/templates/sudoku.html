@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class = box-container>
+<div class = sudoku-container>
 	
-	<form method="POST" action="/">
+	<form method="POST" action="/sudoku">
 
 		{{ form.csrf_token }}
 
-		<div class = "mainrow-1">
+		<div class = "puzzle-mainrow-1">
 
 			<div class = puzzle-row >
 				<div class = puzzle-item>{{ form.field11 }}</div>
@@ -48,7 +48,7 @@
 		</div>
 				
 
-		<div class = mainrow-2>
+		<div class = puzzle-mainrow-2>
 			
 			<div class = puzzle-row >
 				<div class = puzzle-item>{{ form.field41 }}</div>
@@ -88,7 +88,7 @@
 
 		</div>
 				
-		<div class = mainrow-3>
+		<div class = puzzle-mainrow-3>
 
 			<div class = puzzle-row >
 				<div class = puzzle-item>{{ form.field71 }}</div>
@@ -128,15 +128,59 @@
 
 		</div>
 		
+		<div class = "check_hidden">{{ form.check }}</div>
+		<div class = "check_hidden">{{ form.valid_1 }}</div>
+		<div class = "check_hidden">{{ form.valid_2 }}</div>
+		<div class = "check_hidden">{{ form.valid_3 }}</div>
+		<div class = "check_hidden">{{ form.valid_4 }}</div>
+		<div class = "check_hidden">{{ form.valid_5 }}</div>
+		<div class = "check_hidden">{{ form.valid_6 }}</div>
+		<div class = "check_hidden">{{ form.valid_7 }}</div>
+		<div class = "check_hidden">{{ form.valid_8 }}</div>
+		<div class = "check_hidden">{{ form.valid_9 }}</div>
 
-		<div class = "check-solution">
-			{{ form.check }}
-			<p>{{ form.is_solved }}</p>
+
+		<div id = "solution_message">{{ form.is_solved }}</div>
+
+		<div class = is_valid >
+			<div id = is_valid_1>1</div>
+			<div id = is_valid_2>2</div>
+			<div id = is_valid_3>3</div>
+			<div id = is_valid_4>4</div>
+			<div id = is_valid_5>5</div>
+			<div id = is_valid_6>6</div>
+			<div id = is_valid_7>7</div>
+			<div id = is_valid_8>8</div>
+			<div id = is_valid_9>9</div>
 		</div>
 
-		<div class = "reset-solution"><a href="{{ url_for('sudoku_reset') }}">Reset</a></div>
+		<div class = "sudoku_buttons">
+			<div><a href="{{ url_for('sudoku_reset') }}">Reset Puzzle</a></div>
+			<div><a href="{{ url_for('sudoku_new')}}">New Puzzle</a></div>	
+		</div>
+		
+
+		
 	</form>
 	
 </div>
 
+<script>
+
+	function change_color() {
+		for (let i = 0; i < 9; i++) {
+			var this_logic   = "valid_"    + String(i+1);
+			var this_element = "is_valid_" + String(i+1);
+			if (document.getElementById(this_logic).value == "True") {
+				document.getElementById(this_element).style.backgroundColor = "#E3788422";
+				document.getElementById(this_element).style.color = "black";
+			} else {
+				document.getElementById(this_element).style.backgroundColor = "#E37884ff";
+				document.getElementById(this_element).style.color = "white";
+			}
+		}
+	}
+	change_color()
+
+</script>
 {% endblock %}

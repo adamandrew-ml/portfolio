@@ -1,9 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="baseclass">
-    	<p style = "color: black; font-size: 50px;">
-    		CONTENT HERE <b>
-    		ABOUT
-    	</b></p>
+
+<div class = "about-container">
+    <div class = "about-image">
+        <img id = "about-img" src = "static/images/aa_img.jpeg">
     </div>
+    <div class = "about-textbox">
+        My name is Adam Andrew. I am a professional data analytics consultant specialising in extracting meaningful and insightful stories from data of all shapes and sizes. Since 2012 I've been working with organisations to identify opportunities for data-enabled improvement, working businesses big and small across a range of industries.
+        <br><br>
+        My technical experience spans the data lifecycle from data strategy and enablement to expoloratory analytics, applying data science methods, developing intelligent solutions based on AI and machine learning, and creating business facing outpouts such as web applications, BI solutions and presentations for senior audiences.
+    </div>
+    <ul class = about-icon-boxes>
+        <li><img src = "https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png"></li>
+        <li><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Microsoft_Azure_Logo.svg/2560px-Microsoft_Azure_Logo.svg.png"></li>
+        <li><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/1200px-Flask_logo.svg.png"></li>
+        <li><img src = "https://cdn.icon-icons.com/icons2/2699/PNG/512/databricks_logo_icon_169299.png"></li>
+    </ul>
+    <ul class = about-icon-boxes>
+        <li><img src = "https://www.nextpathway.com/hubfs/nextPathway_assets_2023/images/pages/Target_cloud/IMG_0133.png"></li>
+        <li><img src = "https://techcommunity.microsoft.com/t5/image/serverpage/image-id/420557i0319A4181851485A/image-size/original?v=v2&px=-1"></li>
+        <li><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/2560px-Scikit_learn_logo_small.svg.png"></li>
+        <li><img src = "https://assets-global.website-files.com/601064f495f4b4967f921aa9/632b60f8c1aa184a0e5766d9_202209-ms-sql-icon-3x.png"></li>
+        <li><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1024px-OpenAI_Logo.svg.png"></li>
+    </ul>
+</div>
+
+
+
 {% endblock %}
