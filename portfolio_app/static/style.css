@@ -9,6 +9,7 @@
 	--lightcoral: #E37884ff;
 	--lightcoral-t : #E3788422;
 	--mistyrose: #F8DDE0ff;
+	--mistyrose-t: #F8DDE066;
 	--white: #fff;
 	--transition-speed: 1s;
 }
@@ -23,11 +24,6 @@ a {
 	color: var(--ivory);
 }
 
-ul {
-	margin: 0;
-	padding: 0;
-}
-
 .nav-bar-top {
 	height: 50px;
 	width: 100%;
@@ -35,7 +31,9 @@ ul {
 	color: var(--white);
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
+	overflow: hidden;
+	position: fixed;
 }
 
 .nav-bar-ul {
@@ -44,6 +42,9 @@ ul {
 	text-align: center;
 	justify-content: center;
 	list-style-type: none;
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
 }
 
 .nav-bar-ul li {
@@ -51,7 +52,12 @@ ul {
 }
 
 
+
+
+
+
 .about-container {
+	padding-top: 70px;
 	margin: auto;
 	width: 60%;
 	font-family: Roboto;
@@ -65,8 +71,8 @@ ul {
 }
 
 #about-img {
-	height: 320px;
-	width: 60%;
+	height: 310px;
+	width: 50%;
 	object-fit: cover;
 	object-position: 0 20%;
 	border-radius: 50px;
@@ -100,9 +106,72 @@ ul {
 
 
 
+
+.portfolio-container {
+	padding-top: 70px;
+	margin: auto;
+	width: 60%;
+	font-family: Roboto;
+	font-size: 16px;
+}
+
+.portfolio-org-container {
+	display: inline;
+	width: 100%;
+	height: 300px;
+}
+
+.portfolio-org-header {
+	display: flex;
+	height: 20px;
+	width: 100%;
+	background-color: var(--claret);
+	color: white;
+}
+
+.portfolio-org-name {
+	padding: 0px 5px;
+	width: 20%;
+}
+
+.portfolio-job-title {
+	padding: 0px 5px;
+	width: 60%;
+}
+
+.portfolio-date-from {
+	padding: 0px 5px;
+	width: 10%;
+	text-align: left;
+}
+
+.portfolio-date-to {
+	padding: 0px 5px;
+	text-align: right;
+	width: 10%;
+}
+
+.portfolio-org-main {
+	width: 100%;
+	display: flex;
+	background-color: var(--mistyrose-t);
+	margin-bottom: 20px;
+	justify-content: center;
+}
+
+.portfolio-org-text {
+	width: 98%;
+	margin: 3px 0px;
+	text-align: justify;
+	font-size: 12px;
+}
+
+
+
 .sudoku-container {
+	padding-top: 70px;
     height: 100%;
-    padding: 20px 200px;
+    /* padding: 20px 200px; */
     display: flex;
    	align-items: center;
 	justify-content: center;
@@ -142,13 +211,13 @@ ul {
 }
 
 
-.is_valid {
+.puzzle_is_valid {
 	display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.is_valid div {
+.puzzle_is_valid div {
 	margin: 2px;
 	width: 5%;
 	align-items: center;
@@ -168,7 +237,7 @@ ul {
 	--mistyrose: #F8DDE0ff;
 	--white: #fff;*/
 
-input[type=text] {
+.sudoku-container input[type=text] {
 	height: 40px;
 	width: 40px;
 	font-size: 28px;
@@ -178,13 +247,13 @@ input[type=text] {
 	background-color: var(--lightcoral);	
 }
 
-input[type=text][disabled="disabled"] {
+.sudoku-container input[type=text][disabled="disabled"] {
 	background-color: var(--lightcoral-t);
 	color: black;
 	border-radius: 1px;
 }
 
-.check_hidden, #check {
+.puzzle_check_hidden, #check {
   visibility: hidden;
   height: 0px;
   width: 100%;

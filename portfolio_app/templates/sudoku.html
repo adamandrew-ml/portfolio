@@ -128,30 +128,30 @@
 
 		</div>
 		
-		<div class = "check_hidden">{{ form.check }}</div>
-		<div class = "check_hidden">{{ form.valid_1 }}</div>
-		<div class = "check_hidden">{{ form.valid_2 }}</div>
-		<div class = "check_hidden">{{ form.valid_3 }}</div>
-		<div class = "check_hidden">{{ form.valid_4 }}</div>
-		<div class = "check_hidden">{{ form.valid_5 }}</div>
-		<div class = "check_hidden">{{ form.valid_6 }}</div>
-		<div class = "check_hidden">{{ form.valid_7 }}</div>
-		<div class = "check_hidden">{{ form.valid_8 }}</div>
-		<div class = "check_hidden">{{ form.valid_9 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.check }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_1 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_2 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_3 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_4 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_5 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_6 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_7 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_8 }}</div>
+		<div class = "puzzle_check_hidden">{{ form.valid_9 }}</div>
 
 
 		<div id = "solution_message">{{ form.is_solved }}</div>
 
-		<div class = is_valid >
-			<div id = is_valid_1>1</div>
-			<div id = is_valid_2>2</div>
-			<div id = is_valid_3>3</div>
-			<div id = is_valid_4>4</div>
-			<div id = is_valid_5>5</div>
-			<div id = is_valid_6>6</div>
-			<div id = is_valid_7>7</div>
-			<div id = is_valid_8>8</div>
-			<div id = is_valid_9>9</div>
+		<div class = puzzle_is_valid >
+			<div id = puzzle_is_valid_1>1</div>
+			<div id = puzzle_is_valid_2>2</div>
+			<div id = puzzle_is_valid_3>3</div>
+			<div id = puzzle_is_valid_4>4</div>
+			<div id = puzzle_is_valid_5>5</div>
+			<div id = puzzle_is_valid_6>6</div>
+			<div id = puzzle_is_valid_7>7</div>
+			<div id = puzzle_is_valid_8>8</div>
+			<div id = puzzle_is_valid_9>9</div>
 		</div>
 
 		<div class = "sudoku_buttons">
@@ -170,7 +170,7 @@
 	function change_color() {
 		for (let i = 0; i < 9; i++) {
 			var this_logic   = "valid_"    + String(i+1);
-			var this_element = "is_valid_" + String(i+1);
+			var this_element = "puzzle_is_valid_" + String(i+1);
 			if (document.getElementById(this_logic).value == "True") {
 				document.getElementById(this_element).style.backgroundColor = "#E3788422";
 				document.getElementById(this_element).style.color = "black";
