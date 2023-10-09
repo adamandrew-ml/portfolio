@@ -8,6 +8,10 @@ from datetime import datetime as dt
 import matplotlib.pyplot as plt
 from apphelpers.app_functions import SDK, FIFA_Processing
 
+import os
+
+# lsof -i :5000
+# kill -9 <PORT>
 
 app = Flask("myapp")
 app.config['SECRET_KEY'] = 'temp_pw'
@@ -91,6 +95,7 @@ def sudoku_new():
 @app.route("/fifa")
 def fifa():
 	FIFA = FIFA_Processing(table_name = "players", database_name = "fifa.db", process_from_scratch=False)
+	# FIFA = FIFA_Processing(table_name = "players", database_name = "fifa.db", process_from_scratch=True)
 	df = FIFA.select_from_database(listed_columns=["short_name", "club_name"], return_as="DataFrame")
 	df_limit = df.copy().iloc[:100, :]
 	return render_template("fifa.html", somedata = df_limit)
