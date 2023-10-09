@@ -10,6 +10,7 @@ import numpy as np
 from pandas.api.types import infer_dtype
 import sqlite3
 from tqdm import tqdm
+import os
 
 class Sudoku:
     
@@ -219,8 +220,6 @@ class SDK(FlaskForm):
 
 
 
-
-
 class FIFA_Processing:
     
     def __init__(self, database_name, table_name, process_from_scratch):
@@ -254,6 +253,7 @@ class FIFA_Processing:
             for k in eval(f"self.{i}"):
                 self.semantics[k] = i
         
+        self.set_database_connection()
         if self.from_scratch == True:
             self.import_data()
             self.data_quality_fix()
@@ -273,9 +273,11 @@ class FIFA_Processing:
     
     def import_data(self):
         print("Importing data")
+        print(os.getcwd())
         self.data = {}
+        base = "/Users/adamandrew/Programming/Repos/Portfolio/portfolio_app/data/"
         for year in np.arange(15, 22):
-            self.data[f"df_{str(year)}"] = {"df": pd.read_csv(f"players_{str(year)}.csv")}
+            self.data[f"df_{str(year)}"] = {"df": pd.read_csv(f"{base}players_{str(year)}.csv")}
             self.data[f"df_{str(year)}"]["df"]["year"] = int("20" + str(year))
         print("Successfully imported data\n")
     

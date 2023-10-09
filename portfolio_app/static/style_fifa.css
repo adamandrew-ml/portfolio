@@ -1,0 +1,15 @@
+.fifa-container {
+	padding-top: 70px;
+	margin: auto;
+	width: 60%;
+	font-family: Roboto;
+	font-size: 16px;
+}
+
+td {
+    border: 1px solid black;
+}
+
+thead {
+    background-color: red;
+}

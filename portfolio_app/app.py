@@ -87,6 +87,14 @@ def sudoku_new():
     SDK.Puzzle.reset_all()
     return redirect(url_for("sudoku"))
 
+
+@app.route("/fifa")
+def fifa():
+	FIFA = FIFA_Processing(table_name = "players", database_name = "fifa.db", process_from_scratch=False)
+	df = FIFA.select_from_database(listed_columns=["short_name", "club_name"], return_as="DataFrame")
+	df_limit = df.copy().iloc[:100, :]
+	return render_template("fifa.html", somedata = df_limit)
+
 if __name__ == "__main__":
 	app.run(debug = True)
 
