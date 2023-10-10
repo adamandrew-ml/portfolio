@@ -94,9 +94,9 @@ def sudoku_new():
 
 @app.route("/fifa")
 def fifa():
-	FIFA = FIFA_Processing(table_name = "players", database_name = "fifa.db", process_from_scratch=False)
-	# FIFA = FIFA_Processing(table_name = "players", database_name = "fifa.db", process_from_scratch=True)
-	df = FIFA.select_from_database(listed_columns=["short_name", "club_name"], return_as="DataFrame")
+
+	FIFA = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
+	df = FIFA.select_from_database(return_as="DataFrame")
 	df_limit = df.copy().iloc[:100, :]
 	return render_template("fifa.html", somedata = df_limit)
 

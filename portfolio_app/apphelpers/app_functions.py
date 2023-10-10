@@ -224,9 +224,15 @@ class FIFA_Processing:
     
     def __init__(self, database_name, table_name, process_from_scratch):
         
-        os.chdir("./data")
+        self.database_name = database_name[::-1][:database_name[::-1].index("/")][::-1]
+        self.database_path = database_name[:database_name.index(self.database_name)]
 
-        self.database_name  = database_name
+        curr_dir = os.getcwd()
+        print(curr_dir)
+        if curr_dir[-4:] != "data":
+            os.chdir(self.database_path)
+        print(os.getcwd())
+
         self.table_name     = table_name
         self.from_scratch   = process_from_scratch
         self.connection     = None
@@ -278,8 +284,7 @@ class FIFA_Processing:
         print(os.getcwd())
         self.data = {}
         for year in np.arange(15, 22):
-            # print(f"players_{str(year)}.csv")
-            self.data[f"df_{str(year)}"] = {"df": pd.read_csv(f"players_{str(year)}.csv")}
+            self.data[f"df_{str(year)}"] = {"df": pd.read_csv(f"./data/players_{str(year)}.csv")}
             self.data[f"df_{str(year)}"]["df"]["year"] = int("20" + str(year))
         print("Successfully imported data\n")
     
@@ -394,9 +399,9 @@ class FIFA_Processing:
         if len(listed_columns) > 0:
             for i in listed_columns:
                 base += f"{i}, "
-            base = base.strip()[:-1].strip() + " FROM players"
+            base = base.strip()[:-1].strip() + " FROM players LIMIT 100"
         else:
-            base += f"* FROM players"
+            base += f"* FROM players LIMIT 100"
         output = self.cursor.execute(base)
         df_columns = [i[0] for i in output.description]
         output = output.fetchall()

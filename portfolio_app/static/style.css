@@ -17,9 +17,10 @@
 body {
 	margin: 0;
 	font-family: 'Roboto', sans-serif;
+	overflow: hidden;
 }
 
-a {
+.nav-bar-top a {
 	text-decoration: none;
 	color: var(--ivory);
 }
