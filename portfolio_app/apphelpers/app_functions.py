@@ -227,12 +227,6 @@ class FIFA_Processing:
         self.database_name = database_name[::-1][:database_name[::-1].index("/")][::-1]
         self.database_path = database_name[:database_name.index(self.database_name)]
 
-        curr_dir = os.getcwd()
-        print(curr_dir)
-        if curr_dir[-4:] != "data":
-            os.chdir(self.database_path)
-        print(os.getcwd())
-
         self.table_name     = table_name
         self.from_scratch   = process_from_scratch
         self.connection     = None
@@ -278,7 +272,7 @@ class FIFA_Processing:
             "data_type"     : [infer_dtype(df[i]) for i in df.columns]
         })
         return meta
-    
+
     def import_data(self):
         print("Importing data")
         print(os.getcwd())
@@ -383,8 +377,11 @@ class FIFA_Processing:
         self.connection.commit()
 
     def set_database_connection(self):
+        root_path = os.getcwd()
+        os.chdir(self.database_path)
         self.connection = sqlite3.connect(self.database_name)
         self.cursor = self.connection.cursor()
+        os.chdir(root_path)
 
     def end_database_connections(self):
         if self.connection is not None:
@@ -393,15 +390,16 @@ class FIFA_Processing:
         self.cursor = None
 
     def select_from_database(self, listed_columns = [], return_as = "raw"):
+        
         if self.connection is None:
             self.set_database_connection()
         base = "SELECT "
         if len(listed_columns) > 0:
             for i in listed_columns:
                 base += f"{i}, "
-            base = base.strip()[:-1].strip() + " FROM players LIMIT 100"
+            base = base.strip()[:-1].strip() + " FROM players"
         else:
-            base += f"* FROM players LIMIT 100"
+            base += f"* FROM players"
         output = self.cursor.execute(base)
         df_columns = [i[0] for i in output.description]
         output = output.fetchall()

@@ -13,6 +13,19 @@ import os
 # lsof -i :5000
 # kill -9 <PORT>
 
+
+
+class Filter(FlaskForm):
+	placeholder = [("Select", "Select")] 
+	FIFA_BASE = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
+	options_year = placeholder + [ (i[0], i[0]) for i in FIFA_BASE.cursor.execute("SELECT DISTINCT year FROM players").fetchall() ]
+	options_club = placeholder + [ (i[0], i[0]) for i in FIFA_BASE.cursor.execute("SELECT DISTINCT club_name FROM players").fetchall() ]
+
+	filter_year = SelectField(choices = options_year)
+	filter_club = SelectField(choices = options_club)
+	apply_filters = SubmitField("Apply filters")
+
+
 app = Flask("myapp")
 app.config['SECRET_KEY'] = 'temp_pw'
 
@@ -92,13 +105,22 @@ def sudoku_new():
     return redirect(url_for("sudoku"))
 
 
-@app.route("/fifa")
+@app.route("/fifa", methods = ["GET", "POST"])
 def fifa():
 
+	form = Filter()
 	FIFA = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
-	df = FIFA.select_from_database(return_as="DataFrame")
-	df_limit = df.copy().iloc[:100, :]
-	return render_template("fifa.html", somedata = df_limit)
+	main_df = FIFA.select_from_database(return_as="DataFrame")
+	working_df = main_df.copy()
+
+	if form.validate_on_submit():
+		print(form.filter_year.data)
+		working_df = working_df[working_df["club_name"] == form.filter_club.data]
+		return render_template("fifa.html", fifa_data = working_df, form = form)
+	
+	return render_template("fifa.html", fifa_data = main_df.iloc[:100,:], form = form)
+
+
 
 if __name__ == "__main__":
 	app.run(debug = True)

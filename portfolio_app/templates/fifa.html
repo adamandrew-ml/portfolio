@@ -4,38 +4,46 @@
 
 
 <script>
-
-var buttonstate = new Boolean(false);
-
-function expandit() {
-    if (buttonstate == true) {
-        document.getElementById("filter_box").style.height = "20px";
-        document.getElementById("table-box").style.height = "600px";
-    } else {
-        document.getElementById("filter_box").style.height = "200px";
-        document.getElementById("table-box").style.height = "420px";
-    };
-    buttonstate = !buttonstate;
-    console.log(buttonstate);
-}
-
-
-
+    var buttonstate = new Boolean(true);
+    function expandit() {
+        if (buttonstate == true) {
+            document.getElementById("filter_box").style.height = "20px";
+            document.getElementById("table_box").style.height = "600px";
+            document.getElementById("filter_toggle").innerText = "Show Filters"
+            document.getElementById("filter_form").style.visibility = "hidden";
+        } else {
+            document.getElementById("filter_box").style.height = "200px";
+            document.getElementById("table_box").style.height = "420px";
+            document.getElementById("filter_toggle").innerText = "Hide Filters"
+            document.getElementById("filter_form").style.visibility = "visible";
+        };
+        buttonstate = !buttonstate;
+        console.log(buttonstate);
+    }
 </script>
 
 
 
-<div class = "fifa-container">
+<div class = "fifa_container">
 
-    <div class = "fifa_filters" id = "filter_box" onclick="expandit()">
-        Filters
+    <div class = "fifa_filters" id = "filter_box">
+        <div id = "filter_toggle" onclick="expandit()">Hide Filters</div>
+        <div id = "filter_form">
+            <form action = "/fifa", method="POST">
+                {{ form.csrf_token }}
+
+                {{ form.filter_year }}
+                {{ form.filter_club }}
+                {{ form.apply_filters }}
+            </form>
+        </div>
     </div>
 
-    <div class = "scrollwrapper" id = "table-box">
+    <div class = "table_container" id = "table_box">
 
 
         <table>
-            <tr class="table-header">
+            <tr class="table_header">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Year</th>
@@ -53,8 +61,8 @@ function expandit() {
                 <th>Wage</th>
                 <th>Contract</th>
             </tr>
-            {% for row in somedata.iterrows() %}
-            <tr class="table-row">
+            {% for row in fifa_data.iterrows() %}
+            <tr class="table_row">
                 <td>{{ row[1]["sofifa_id"] }}</td>
                 <td><a href="{{row[1]['player_url']}}" target="_blank">{{ row[1]["short_name"] }}</a></td>
                 <td>{{ row[1]["year"] }}</td>
