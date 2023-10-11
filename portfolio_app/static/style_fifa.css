@@ -23,6 +23,7 @@
 #filter_toggle {
 	cursor:se-resize;
 	width: 100%;
+	margin-bottom: 5px;
 }
 
 form {
@@ -43,8 +44,8 @@ form {
 }
 
 .filters_flex div {
-	border: 1px solid white;
-	margin: 5px;
+	/* border: 1px solid white; */
+	margin: 5px 20px;
 }
 
 .filters_left {width: 30%;}
@@ -70,6 +71,53 @@ form {
 	padding: 0px;
 	margin-left: 10px;
 }
+
+
+
+.slider_label {
+	/* border: 1px solid yellow; */
+	/* background-color: yellow; */
+	min-width: 20px;
+	margin: 0px 20px;
+	text-align: left;
+}
+
+.slider_break {
+	/* border: 1px solid yellow; */
+	/* background-color: yellow; */
+	min-width: 20px;
+	margin: 0px 20px;
+	text-align: center;
+}
+
+.slider input[type="range"] {
+	-webkit-appearance: none;  /* Override default CSS styles */
+	appearance: none;
+	width: 100%; /* Full-width */
+	height: 3px; /* Specified height */
+	background: var(--lightcoral);
+	outline: none; /* Remove outline */
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+  }
+
+  .slider input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none; /* Override default look */
+	appearance: none;
+	width: 10px; /* Set a specific slider handle width */
+	height: 10px; /* Slider handle height */
+	background: var(--white);
+	cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider input[type="range"]::-moz-range-thumb {
+	width: 10px; /* Set a specific slider handle width */
+	height: 10px; /* Slider handle height */
+	background: yellow;
+	cursor: pointer; /* Cursor on hover */
+  }
+
+
 
 
 

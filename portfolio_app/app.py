@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, redirect, request
 import pandas as pd
 import numpy as np
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, StringField, SubmitField, HiddenField
+from wtforms import StringField, SelectField, StringField, SubmitField, HiddenField, IntegerRangeField
 from wtforms.validators import InputRequired, Length
 from datetime import datetime as dt
 import matplotlib.pyplot as plt
@@ -38,8 +38,21 @@ class Filter(FlaskForm):
 	filter_year         = SelectField(label = "Year:", choices = FIFA_BASE.set_options(working_df,   "year"))
 	filter_club         = SelectField(label = "Club:", choices = FIFA_BASE.set_options(working_df,   "club_name"))
 	filter_league       = SelectField(label = "League:", choices = FIFA_BASE.set_options(working_df, "league_name"))
-	filter_teamposition = SelectField(label = "Position:", choices = FIFA_BASE.set_options(working_df, "team_position"))
+	filter_teamposition = SelectField(label = "Plays As:", choices = FIFA_BASE.set_options(working_df, "team_position"))
 	filter_nationality  = SelectField(label = "Nationality:", choices = FIFA_BASE.set_options(working_df, "nationality"))
+
+	filter_age_min      = IntegerRangeField(label = "Age:")
+	filter_age_max      = IntegerRangeField(label = "Age:")
+	filter_height_min   = IntegerRangeField(label = "Height:")
+	filter_height_max   = IntegerRangeField(label = "Height:")
+	filter_weight_min   = IntegerRangeField(label = "Weight:")
+	filter_weight_max   = IntegerRangeField(label = "Weight:")
+	filter_value_min    = IntegerRangeField(label = "Value:")
+	filter_value_max    = IntegerRangeField(label = "Value:")
+	filter_wage_min     = IntegerRangeField(label = "Wage:")
+	filter_wage_max     = IntegerRangeField(label = "Wage:")
+	filter_overall_min  = IntegerRangeField(label = "Rating:")
+	filter_overall_max  = IntegerRangeField(label = "Rating:")
 
 	# INSERT POINT 3 (IN HTML)
 
@@ -139,27 +152,30 @@ def fifa():
 		options = []
 		logic_exceptions = ["short_name"]
 		for db_field, form_field in form.all_fields.items():
-			if (eval(f"form.{form_field}").data != "Select all") and (db_field not in logic_exceptions):
+			if eval(f"form.{form_field}").data != "Select all":
 				options.append((db_field, eval(f"form.{form_field}").data))
 
 		if len(options) > 0:
+			import string
 			for db_field, form_value in options:
-				try:
-					form.working_df = form.working_df[form.working_df[db_field] == int(form_value)]
-				except:
-					form.working_df = form.working_df[form.working_df[db_field] == form_value]
+				if db_field not in logic_exceptions:
+					try:
+						form.working_df = form.working_df[form.working_df[db_field] == int(form_value)]
+					except:
+						form.working_df = form.working_df[form.working_df[db_field] == form_value]
+				elif db_field == "short_name":
+					form.working_df = form.working_df[ (form.working_df[db_field].str.lower()).str.contains(form_value)]
 
 			for db_field, form_field in form.all_fields.items():
 				eval(f"form.{form_field}").choices = form.FIFA_BASE.set_options(form.working_df, db_field)
 
-		# SEPARATE LOGIC FOR NAME
 
 
 		if len(form.working_df) > 100:
 			returnable = form.working_df.iloc[:100, :]
 		else:
 			returnable = form.working_df
-
+		print(form.filter_age_min.data)
 		return render_template("fifa.html", fifa_data = returnable, form = form)
 	
 	return render_template("fifa.html", fifa_data = form.main_df.iloc[:100,:], form = form)
