@@ -2,28 +2,6 @@
 {% block content %}
 <link rel="stylesheet" href="static/style_fifa.css">
 
-
-<script>
-    var buttonstate = new Boolean(true);
-    function expandit() {
-        if (buttonstate == true) {
-            document.getElementById("filter_box").style.height = "20px";
-            document.getElementById("table_box").style.height = "600px";
-            document.getElementById("filter_toggle").innerText = "Show Filters"
-            document.getElementById("filter_form").style.visibility = "hidden";
-        } else {
-            document.getElementById("filter_box").style.height = "200px";
-            document.getElementById("table_box").style.height = "420px";
-            document.getElementById("filter_toggle").innerText = "Hide Filters"
-            document.getElementById("filter_form").style.visibility = "visible";
-        };
-        buttonstate = !buttonstate;
-        console.log(buttonstate);
-    }
-</script>
-
-
-
 <div class = "fifa_container">
 
     <div class = "fifa_filters" id = "filter_box">
@@ -67,53 +45,52 @@
 
                             <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
 
-
                             <tr>
                                 <td class = "slider_label">{{ form.filter_age_min.label }}</td>
                                 <td class = "slider">{{ form.filter_age_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_age_max }}</td>
                             </tr>
                             <tr>
                                 <td class = "slider_label">{{ form.filter_height_min.label }}</td>
                                 <td class = "slider">{{ form.filter_height_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_height_max }}</td>
                             </tr>
                             <tr>
                                 <td class = "slider_label">{{ form.filter_weight_min.label }}</td>
                                 <td class = "slider">{{ form.filter_weight_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_weight_max }}</td>
                             </tr>
                             <tr>
                                 <td class = "slider_label">{{ form.filter_value_min.label }}</td>
                                 <td class = "slider">{{ form.filter_value_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_value_max }}</td>
                             </tr>
                             <tr>
                                 <td class = "slider_label">{{ form.filter_wage_min.label }}</td>
                                 <td class = "slider">{{ form.filter_wage_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_wage_max }}</td>
                             </tr>
                             <tr>
                                 <td class = "slider_label">{{ form.filter_overall_min.label }}</td>
                                 <td class = "slider">{{ form.filter_overall_min }}</td>
-                                <td class = slider_break>Text</td>
-                                <td class = slider_break>and</td>
-                                <td class = slider_break>Text</td>
+                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break">and</td>
+                                <td class = "slider_break">Text</td>
                                 <td class = "slider">{{ form.filter_overall_max }}</td>
                             </tr>
                         </table>
@@ -174,6 +151,25 @@
     </div>
 </div>
 
+
+
+<script>
+    var buttonstate = new Boolean(true);
+    function expandit() {
+        if (buttonstate == true) {
+            document.getElementById("filter_box").style.height = "20px";
+            document.getElementById("table_box").style.height = "600px";
+            document.getElementById("filter_toggle").innerText = "Show Filters"
+            document.getElementById("filter_form").style.visibility = "hidden";
+        } else {
+            document.getElementById("filter_box").style.height = "200px";
+            document.getElementById("table_box").style.height = "420px";
+            document.getElementById("filter_toggle").innerText = "Hide Filters"
+            document.getElementById("filter_form").style.visibility = "visible";
+        };
+        buttonstate = !buttonstate;
+    }
+</script>
 
 
 {% endblock %}

@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, StringField, SubmitField, HiddenField, IntegerRangeField
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import InputRequired, Length, NumberRange
 from datetime import datetime as dt
 import matplotlib.pyplot as plt
 from apphelpers.app_functions import SDK, FIFA_Processing
@@ -41,18 +41,18 @@ class Filter(FlaskForm):
 	filter_teamposition = SelectField(label = "Plays As:", choices = FIFA_BASE.set_options(working_df, "team_position"))
 	filter_nationality  = SelectField(label = "Nationality:", choices = FIFA_BASE.set_options(working_df, "nationality"))
 
-	filter_age_min      = IntegerRangeField(label = "Age:")
-	filter_age_max      = IntegerRangeField(label = "Age:")
-	filter_height_min   = IntegerRangeField(label = "Height:")
-	filter_height_max   = IntegerRangeField(label = "Height:")
-	filter_weight_min   = IntegerRangeField(label = "Weight:")
-	filter_weight_max   = IntegerRangeField(label = "Weight:")
-	filter_value_min    = IntegerRangeField(label = "Value:")
-	filter_value_max    = IntegerRangeField(label = "Value:")
-	filter_wage_min     = IntegerRangeField(label = "Wage:")
-	filter_wage_max     = IntegerRangeField(label = "Wage:")
-	filter_overall_min  = IntegerRangeField(label = "Rating:")
-	filter_overall_max  = IntegerRangeField(label = "Rating:")
+	filter_age_min      = IntegerRangeField(label = "Age", id = "filter_slider_age_min_id")
+	filter_age_max      = IntegerRangeField(label = "Age")
+	filter_height_min   = IntegerRangeField(label = "Height")
+	filter_height_max   = IntegerRangeField(label = "Height")
+	filter_weight_min   = IntegerRangeField(label = "Weight")
+	filter_weight_max   = IntegerRangeField(label = "Weight")
+	filter_value_min    = IntegerRangeField(label = "Value")
+	filter_value_max    = IntegerRangeField(label = "Value")
+	filter_wage_min     = IntegerRangeField(label = "Wage")
+	filter_wage_max     = IntegerRangeField(label = "Wage")
+	filter_overall_min  = IntegerRangeField(label = "Rating")
+	filter_overall_max  = IntegerRangeField(label = "Rating", validators=[NumberRange(min=2, max=8)])
 
 	# INSERT POINT 3 (IN HTML)
 
@@ -145,7 +145,7 @@ def sudoku_new():
 @app.route("/fifa", methods = ["GET", "POST"])
 def fifa():
 
-	form = Filter()
+	form = Filter(csrf_enabled=False)
 
 	if form.validate_on_submit():
 		
@@ -175,7 +175,7 @@ def fifa():
 			returnable = form.working_df.iloc[:100, :]
 		else:
 			returnable = form.working_df
-		print(form.filter_age_min.data)
+		print(form.filter_overall_max.data)
 		return render_template("fifa.html", fifa_data = returnable, form = form)
 	
 	return render_template("fifa.html", fifa_data = form.main_df.iloc[:100,:], form = form)
