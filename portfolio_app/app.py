@@ -16,14 +16,35 @@ import os
 
 
 class Filter(FlaskForm):
-	placeholder = [("Select", "Select")] 
-	FIFA_BASE = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
-	options_year = placeholder + [ (i[0], i[0]) for i in FIFA_BASE.cursor.execute("SELECT DISTINCT year FROM players").fetchall() ]
-	options_club = placeholder + [ (i[0], i[0]) for i in FIFA_BASE.cursor.execute("SELECT DISTINCT club_name FROM players").fetchall() ]
 
-	filter_year = SelectField(choices = options_year)
-	filter_club = SelectField(choices = options_club)
+	FIFA        = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
+	main_df     = FIFA.select_from_database(return_as="DataFrame")
+	working_df  = main_df.copy()
+	FIFA_BASE = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
+
+	# INSERT POINT 1
+	placeholder = [("Select all", "Select all")]
+	all_fields = {
+		"short_name"    : "filter_name",
+		"year"          : "filter_year",
+		"club_name"     : "filter_club",
+		"league_name"   : "filter_league",
+		"team_position" : "filter_teamposition",
+		"nationality"   : "filter_nationality"
+	}
+	
+	# INSERT POINT 2
+	filter_name         = StringField(label = "Name:")
+	filter_year         = SelectField(label = "Year:", choices = FIFA_BASE.set_options(working_df,   "year"))
+	filter_club         = SelectField(label = "Club:", choices = FIFA_BASE.set_options(working_df,   "club_name"))
+	filter_league       = SelectField(label = "League:", choices = FIFA_BASE.set_options(working_df, "league_name"))
+	filter_teamposition = SelectField(label = "Position:", choices = FIFA_BASE.set_options(working_df, "team_position"))
+	filter_nationality  = SelectField(label = "Nationality:", choices = FIFA_BASE.set_options(working_df, "nationality"))
+
+	# INSERT POINT 3 (IN HTML)
+
 	apply_filters = SubmitField("Apply filters")
+	reset_filters = HiddenField()
 
 
 app = Flask("myapp")
@@ -105,20 +126,54 @@ def sudoku_new():
     return redirect(url_for("sudoku"))
 
 
+
+
+
 @app.route("/fifa", methods = ["GET", "POST"])
 def fifa():
 
 	form = Filter()
-	FIFA = FIFA_Processing(table_name = "players", database_name = "./data/fifa.db", process_from_scratch=False)
-	main_df = FIFA.select_from_database(return_as="DataFrame")
-	working_df = main_df.copy()
 
 	if form.validate_on_submit():
-		print(form.filter_year.data)
-		working_df = working_df[working_df["club_name"] == form.filter_club.data]
-		return render_template("fifa.html", fifa_data = working_df, form = form)
+		
+		options = []
+		logic_exceptions = ["short_name"]
+		for db_field, form_field in form.all_fields.items():
+			if (eval(f"form.{form_field}").data != "Select all") and (db_field not in logic_exceptions):
+				options.append((db_field, eval(f"form.{form_field}").data))
+
+		if len(options) > 0:
+			for db_field, form_value in options:
+				try:
+					form.working_df = form.working_df[form.working_df[db_field] == int(form_value)]
+				except:
+					form.working_df = form.working_df[form.working_df[db_field] == form_value]
+
+			for db_field, form_field in form.all_fields.items():
+				eval(f"form.{form_field}").choices = form.FIFA_BASE.set_options(form.working_df, db_field)
+
+		# SEPARATE LOGIC FOR NAME
+
+
+		if len(form.working_df) > 100:
+			returnable = form.working_df.iloc[:100, :]
+		else:
+			returnable = form.working_df
+
+		return render_template("fifa.html", fifa_data = returnable, form = form)
 	
-	return render_template("fifa.html", fifa_data = main_df.iloc[:100,:], form = form)
+	return render_template("fifa.html", fifa_data = form.main_df.iloc[:100,:], form = form)
+
+
+
+
+@app.route("/fifa/reset", methods = ["GET", "POST"])
+def fifa_reset():
+	Filter.working_df = Filter.main_df.copy()
+	return redirect(url_for("fifa"))
+
+
+
 
 
 

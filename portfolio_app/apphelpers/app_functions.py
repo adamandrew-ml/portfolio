@@ -407,6 +407,9 @@ class FIFA_Processing:
             output = pd.DataFrame(output, columns = df_columns)
         return output
     
+    def set_options(self, working_df, field):
+        placeholder = [("Select all", "Select all")]
+        return placeholder + [(i, i) for i in working_df[field].unique()]
 
 
     

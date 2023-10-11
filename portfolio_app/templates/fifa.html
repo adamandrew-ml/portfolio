@@ -27,14 +27,78 @@
 <div class = "fifa_container">
 
     <div class = "fifa_filters" id = "filter_box">
-        <div id = "filter_toggle" onclick="expandit()">Hide Filters</div>
+        <div id = "filter_toggle" onclick="expandit()">
+            Hide Filters
+        </div>
         <div id = "filter_form">
             <form action = "/fifa", method="POST">
                 {{ form.csrf_token }}
+                <div class="filters_flex">
+                    <div class = "filters_left">
+                        <table class = "filter_left_table">
+                            <tr>
+                                <td>{{ form.filter_name.label }}</td>
+                                <td>{{ form.filter_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.filter_year.label }}</td>
+                                <td>{{ form.filter_year }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.filter_club.label }}</td>
+                                <td>{{ form.filter_club }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.filter_league.label }}</td>
+                                <td>{{ form.filter_league }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.filter_teamposition.label }}</td>
+                                <td>{{ form.filter_teamposition }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ form.filter_nationality.label }}</td>
+                                <td>{{ form.filter_nationality }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class = "filters_center">
+                        <table class = "filter_left_table">
 
-                {{ form.filter_year }}
-                {{ form.filter_club }}
-                {{ form.apply_filters }}
+                            <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+
+
+                            <tr>
+                                <td>{{ Slider1 }}</td>
+                                <td>{{ Slider1 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ Slider2 }}</td>
+                                <td>{{ Slider2 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ Slider3 }}</td>
+                                <td>{{ Slider3 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ Slider4 }}</td>
+                                <td>{{ Slider4 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ Slider5 }}</td>
+                                <td>{{ Slider5 }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ Slider6 }}</td>
+                                <td>{{ Slider6 }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class = "filter_right">
+                        {{ form.apply_filters }}
+                        <button type="button" onclick="window.location.href='{{ url_for('fifa_reset') }}';">Reset filters</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
