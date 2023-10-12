@@ -42,55 +42,58 @@
                     </div>
                     <div class = "filters_center">
                         <table class = "filter_left_table">
-
-                            <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
-
+                            
                             <tr>
                                 <td class = "slider_label">{{ form.filter_age_min.label }}</td>
                                 <td class = "slider">{{ form.filter_age_min }}</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_age_min_val">#</span></td>
                                 <td class = "slider_break">and</output></td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_age_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_age_max }}</td>
                             </tr>
+
                             <tr>
                                 <td class = "slider_label">{{ form.filter_height_min.label }}</td>
                                 <td class = "slider">{{ form.filter_height_min }}</td>
-                                <td class = "slider_break">Text</td>
-                                <td class = "slider_break">and</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_hei_min_val">#</span></td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break"><span id = "filter_slider_hei_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_height_max }}</td>
                             </tr>
+
                             <tr>
                                 <td class = "slider_label">{{ form.filter_weight_min.label }}</td>
                                 <td class = "slider">{{ form.filter_weight_min }}</td>
-                                <td class = "slider_break">Text</td>
-                                <td class = "slider_break">and</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_wei_min_val">#</span></td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break"><span id = "filter_slider_wei_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_weight_max }}</td>
                             </tr>
+
                             <tr>
                                 <td class = "slider_label">{{ form.filter_value_min.label }}</td>
                                 <td class = "slider">{{ form.filter_value_min }}</td>
-                                <td class = "slider_break">Text</td>
-                                <td class = "slider_break">and</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_val_min_val">#</span></td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break"><span id = "filter_slider_val_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_value_max }}</td>
                             </tr>
+
                             <tr>
                                 <td class = "slider_label">{{ form.filter_wage_min.label }}</td>
                                 <td class = "slider">{{ form.filter_wage_min }}</td>
-                                <td class = "slider_break">Text</td>
-                                <td class = "slider_break">and</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_wag_min_val">#</span></td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break"><span id = "filter_slider_wag_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_wage_max }}</td>
                             </tr>
+
                             <tr>
                                 <td class = "slider_label">{{ form.filter_overall_min.label }}</td>
                                 <td class = "slider">{{ form.filter_overall_min }}</td>
-                                <td class = "slider_break">Text</td>
-                                <td class = "slider_break">and</td>
-                                <td class = "slider_break">Text</td>
+                                <td class = "slider_break"><span id = "filter_slider_rat_min_val">#</span></td>
+                                <td class = "slider_break">and</output></td>
+                                <td class = "slider_break"><span id = "filter_slider_rat_max_val">#</span></td>
                                 <td class = "slider">{{ form.filter_overall_max }}</td>
                             </tr>
                         </table>
@@ -169,7 +172,75 @@
         };
         buttonstate = !buttonstate;
     }
+
+    // <!-- https://www.w3schools.com/howto/howto_js_rangeslider.asp -->
+
+    var filter_slider_age_min_elem = document.getElementById("filter_slider_age_min_id");
+    var filter_slider_age_min_show = document.getElementById("filter_slider_age_min_val");
+    filter_slider_age_min_show.innerHTML = filter_slider_age_min_elem.value;
+    filter_slider_age_min_elem.oninput = function() {filter_slider_age_min_show.innerHTML = this.value;}
+
+    var filter_slider_age_max_elem = document.getElementById("filter_slider_age_max_id");
+    var filter_slider_age_max_show = document.getElementById("filter_slider_age_max_val");
+    filter_slider_age_max_show.innerHTML = filter_slider_age_max_elem.value;
+    filter_slider_age_max_elem.oninput = function() {filter_slider_age_max_show.innerHTML = this.value;}
+
+    var filter_slider_hei_min_elem = document.getElementById("filter_slider_hei_min_id");
+    var filter_slider_hei_min_show = document.getElementById("filter_slider_hei_min_val");
+    filter_slider_hei_min_show.innerHTML = String(filter_slider_hei_min_elem.value) + " cm";
+    filter_slider_hei_min_elem.oninput = function() {filter_slider_hei_min_show.innerHTML = String(this.value) + " cm";}
+
+    var filter_slider_hei_max_elem = document.getElementById("filter_slider_hei_max_id");
+    var filter_slider_hei_max_show = document.getElementById("filter_slider_hei_max_val");
+    filter_slider_hei_max_show.innerHTML = String(filter_slider_hei_max_elem.value) + " cm";
+    filter_slider_hei_max_elem.oninput = function() {filter_slider_hei_max_show.innerHTML = String(this.value) + " cm";}
+
+    var filter_slider_wei_min_elem = document.getElementById("filter_slider_wei_min_id");
+    var filter_slider_wei_min_show = document.getElementById("filter_slider_wei_min_val");
+    filter_slider_wei_min_show.innerHTML = String(filter_slider_wei_min_elem.value) + " kg";
+    filter_slider_wei_min_elem.oninput = function() {filter_slider_wei_min_show.innerHTML = String(this.value) + " kg";}
+
+    var filter_slider_wei_max_elem = document.getElementById("filter_slider_wei_max_id");
+    var filter_slider_wei_max_show = document.getElementById("filter_slider_wei_max_val");
+    filter_slider_wei_max_show.innerHTML = String(filter_slider_wei_max_elem.value) + " kg";
+    filter_slider_wei_max_elem.oninput = function() {filter_slider_wei_max_show.innerHTML = String(this.value) + " kg";}
+    
+    var filter_slider_val_min_elem = document.getElementById("filter_slider_val_min_id");
+    var filter_slider_val_min_show = document.getElementById("filter_slider_val_min_val");
+    filter_slider_val_min_show.innerHTML = String(Math.round(filter_slider_val_min_elem.value / 1000000)) + " m";
+    filter_slider_val_min_elem.oninput = function() {filter_slider_val_min_show.innerHTML = String(Math.round(this.value / 1000000)) + " m";}
+
+    var filter_slider_val_max_elem = document.getElementById("filter_slider_val_max_id");
+    var filter_slider_val_max_show = document.getElementById("filter_slider_val_max_val");
+    filter_slider_val_max_show.innerHTML = String(Math.round(filter_slider_val_max_elem.value / 1000000)) + " m";
+    filter_slider_val_max_elem.oninput = function() {filter_slider_val_max_show.innerHTML = String(Math.round(this.value / 1000000)) + " m";}
+
+    var filter_slider_wag_min_elem = document.getElementById("filter_slider_wag_min_id");
+    var filter_slider_wag_min_show = document.getElementById("filter_slider_wag_min_val");
+    filter_slider_wag_min_show.innerHTML = String(Math.round(filter_slider_wag_min_elem.value / 1000)) + " k";
+    filter_slider_wag_min_elem.oninput = function() {filter_slider_wag_min_show.innerHTML = String(Math.round(this.value / 1000)) + " k";}
+
+    var filter_slider_wag_max_elem = document.getElementById("filter_slider_wag_max_id");
+    var filter_slider_wag_max_show = document.getElementById("filter_slider_wag_max_val");
+    filter_slider_wag_max_show.innerHTML = String(Math.round(filter_slider_wag_max_elem.value / 1000)) + " k";
+    filter_slider_wag_max_elem.oninput = function() {filter_slider_wag_max_show.innerHTML = String(Math.round(this.value / 1000)) + " k";}
+
+    var filter_slider_rat_min_elem = document.getElementById("filter_slider_rat_min_id");
+    var filter_slider_rat_min_show = document.getElementById("filter_slider_rat_min_val");
+    filter_slider_rat_min_show.innerHTML = filter_slider_rat_min_elem.value;
+    filter_slider_rat_min_elem.oninput = function() {filter_slider_rat_min_show.innerHTML = this.value;}
+
+    var filter_slider_rat_max_elem = document.getElementById("filter_slider_rat_max_id");
+    var filter_slider_rat_max_show = document.getElementById("filter_slider_rat_max_val");
+    filter_slider_rat_max_show.innerHTML = filter_slider_rat_max_elem.value;
+    filter_slider_rat_max_elem.oninput = function() {filter_slider_rat_max_show.innerHTML = this.value;}
+
 </script>
 
 
 {% endblock %}
+
+
+
+
+

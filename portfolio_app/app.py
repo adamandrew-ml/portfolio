@@ -7,6 +7,7 @@ from wtforms.validators import InputRequired, Length, NumberRange
 from datetime import datetime as dt
 import matplotlib.pyplot as plt
 from apphelpers.app_functions import SDK, FIFA_Processing
+import string
 
 import os
 
@@ -41,18 +42,66 @@ class Filter(FlaskForm):
 	filter_teamposition = SelectField(label = "Plays As:", choices = FIFA_BASE.set_options(working_df, "team_position"))
 	filter_nationality  = SelectField(label = "Nationality:", choices = FIFA_BASE.set_options(working_df, "nationality"))
 
-	filter_age_min      = IntegerRangeField(label = "Age", id = "filter_slider_age_min_id")
-	filter_age_max      = IntegerRangeField(label = "Age")
-	filter_height_min   = IntegerRangeField(label = "Height")
-	filter_height_max   = IntegerRangeField(label = "Height")
-	filter_weight_min   = IntegerRangeField(label = "Weight")
-	filter_weight_max   = IntegerRangeField(label = "Weight")
-	filter_value_min    = IntegerRangeField(label = "Value")
-	filter_value_max    = IntegerRangeField(label = "Value")
-	filter_wage_min     = IntegerRangeField(label = "Wage")
-	filter_wage_max     = IntegerRangeField(label = "Wage")
-	filter_overall_min  = IntegerRangeField(label = "Rating")
-	filter_overall_max  = IntegerRangeField(label = "Rating", validators=[NumberRange(min=2, max=8)])
+
+	filter_age_min_range = NumberRange(min=working_df["age"].min(), max=working_df["age"].max())
+	filter_age_min      = IntegerRangeField(
+		label = "Age",    id = "filter_slider_age_min_id",
+										 validators=[filter_age_min_range], default=filter_age_min_range.min)
+
+	filter_age_max_range = NumberRange(min=working_df["age"].min(), max=working_df["age"].max())
+	filter_age_max      = IntegerRangeField(
+		label = "Age",    id = "filter_slider_age_max_id",
+		validators=[filter_age_max_range], default=filter_age_max_range.max)
+
+	filter_height_min_range = NumberRange(min=working_df["height_cm"].min(), max=working_df["height_cm"].max())
+	filter_height_min   = IntegerRangeField(
+		label = "Height", id = "filter_slider_hei_min_id",
+		validators=[filter_height_min_range], default=filter_height_min_range.min)
+
+	filter_height_max_range = NumberRange(min=working_df["height_cm"].min(), max=working_df["height_cm"].max())
+	filter_height_max   = IntegerRangeField(
+		label = "Height", id = "filter_slider_hei_max_id",
+		validators=[filter_height_max_range], default=filter_height_max_range.max)
+
+	filter_weight_min_range = NumberRange(min=working_df["weight_kg"].min(), max=working_df["weight_kg"].max())
+	filter_weight_min   = IntegerRangeField(
+		label = "Weight", id = "filter_slider_wei_min_id",
+		validators=[filter_weight_min_range], default=filter_weight_min_range.min)
+
+	filter_weight_max_range = NumberRange(min=working_df["weight_kg"].min(), max=working_df["weight_kg"].max())
+	filter_weight_max   = IntegerRangeField(
+		label = "Weight", id = "filter_slider_wei_max_id",
+		validators=[filter_weight_max_range], default=filter_weight_max_range.max)
+
+	filter_value_min_range = NumberRange(min=working_df["value_eur"].min(), max=working_df["value_eur"].max())
+	filter_value_min    = IntegerRangeField(
+		label = "Value",  id = "filter_slider_val_min_id",
+		validators=[filter_value_min_range], default=filter_value_min_range.min)
+
+	filter_value_max_range = NumberRange(min=working_df["value_eur"].min(), max=working_df["value_eur"].max())
+	filter_value_max    = IntegerRangeField(
+		label = "Value",  id = "filter_slider_val_max_id",
+		validators=[filter_value_max_range], default=filter_value_max_range.max)
+
+	filter_wage_min_range = NumberRange(min=working_df["wage_eur"].min(), max=working_df["wage_eur"].max())
+	filter_wage_min     = IntegerRangeField(
+		label = "Wage",   id = "filter_slider_wag_min_id",
+		validators=[filter_wage_min_range], default=filter_wage_min_range.min)
+
+	filter_wage_max_range = NumberRange(min=working_df["wage_eur"].min(), max=working_df["wage_eur"].max())
+	filter_wage_max     = IntegerRangeField(
+		label = "Wage",   id = "filter_slider_wag_max_id", 
+		validators=[filter_wage_max_range], default=filter_wage_max_range.max)
+
+	filter_overall_min_range = NumberRange(min=working_df["overall"].min(), max=working_df["overall"].max())
+	filter_overall_min  = IntegerRangeField(
+		label = "Rating", id = "filter_slider_rat_min_id",
+		validators=[filter_overall_min_range], default=filter_overall_min_range.min)
+
+	filter_overall_max_range = NumberRange(min=working_df["overall"].min(), max=working_df["overall"].max())
+	filter_overall_max  = IntegerRangeField(
+		label = "Rating", id = "filter_slider_rat_max_id",
+		validators=[filter_overall_max_range], default=filter_overall_max_range.max)
 
 	# INSERT POINT 3 (IN HTML)
 
@@ -97,37 +146,37 @@ def sudoku():
 				eval(texteval).data = form.Puzzle.puzzle[row,col]
 				eval(texteval).render_kw = {"disabled": "disabled"}
 	            
-	if form.validate_on_submit():
+	# if form.validate_on_submit():
 	
-		all_data = []
+	all_data = []
 
-		for row in range(9):
-			for col in range(9):
-				texteval = f"form.field{row+1}{col+1}"
+	for row in range(9):
+		for col in range(9):
+			texteval = f"form.field{row+1}{col+1}"
 
-				if eval(texteval).render_kw != {"disabled": "disabled"}:
-					allfields = request.form
-					mydata = allfields[f"field{row+1}{col+1}"]
-					eval(texteval).data = mydata
+			if eval(texteval).render_kw != {"disabled": "disabled"}:
+				allfields = request.form
+				mydata = allfields[f"field{row+1}{col+1}"]
+				eval(texteval).data = mydata
 
-				try:
-					all_data.append(int(eval(texteval).data))
-				except:
-					all_data.append(0)
+			try:
+				all_data.append(int(eval(texteval).data))
+			except:
+				all_data.append(0)
+
+	current_solution = np.array(all_data).reshape(9,9)
+
+	if (current_solution == form.Puzzle.solution).all():
+		form.is_solved = "SOLVED!!"
+				
+	for i in np.arange(1,10):
+		check_for_value = ((current_solution == i) == (form.Puzzle.solution == i)).all()
+		texteval = f"form.valid_{i}"
+		eval(texteval).data = check_for_value
 	
-		current_solution = np.array(all_data).reshape(9,9)
-
-		if (current_solution == form.Puzzle.solution).all():
-			form.is_solved = "SOLVED!!"
-                  
-		for i in np.arange(1,10):
-			check_for_value = ((current_solution == i) == (form.Puzzle.solution == i)).all()
-			texteval = f"form.valid_{i}"
-			eval(texteval).data = check_for_value
-		
-		return render_template("sudoku.html", form = form)
-
 	return render_template("sudoku.html", form = form)
+
+	# return render_template("sudoku.html", form = form)
 
 @app.route("/sudoku/reset")
 def sudoku_reset():
@@ -156,7 +205,7 @@ def fifa():
 				options.append((db_field, eval(f"form.{form_field}").data))
 
 		if len(options) > 0:
-			import string
+			
 			for db_field, form_value in options:
 				if db_field not in logic_exceptions:
 					try:
