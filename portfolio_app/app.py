@@ -26,12 +26,24 @@ class Filter(FlaskForm):
 	# INSERT POINT 1
 	placeholder = [("Select all", "Select all")]
 	all_fields = {
-		"short_name"    : "filter_name",
-		"year"          : "filter_year",
-		"club_name"     : "filter_club",
-		"league_name"   : "filter_league",
-		"team_position" : "filter_teamposition",
-		"nationality"   : "filter_nationality"
+		"like_match": {
+			"short_name"    : "filter_name",
+		},
+		"exact_match": {
+			"year"          : "filter_year",
+			"club_name"     : "filter_club",
+			"league_name"   : "filter_league",
+			"team_position" : "filter_teamposition",
+			"nationality"   : "filter_nationality"
+		},
+		"min_max_match" : {
+			"age"           : ["filter_age_min",     "filter_age_max"],
+			"height_cm"     : ["filter_height_min",  "filter_height_max"],
+			"weight_kg"     : ["filter_weight_min",  "filter_height_max"],
+			"value_eur"     : ["filter_value_min",   "filter_value_max"],
+			"wage_eur"      : ["filter_wage_min",    "filter_wage_max"],
+			"overall"       : ["filter_overall_min", "filter_overall_max"],
+		}
 	}
 	
 	# INSERT POINT 2
@@ -146,37 +158,38 @@ def sudoku():
 				eval(texteval).data = form.Puzzle.puzzle[row,col]
 				eval(texteval).render_kw = {"disabled": "disabled"}
 	            
-	# if form.validate_on_submit():
+	if form.validate_on_submit():
 	
-	all_data = []
+		all_data = []
 
-	for row in range(9):
-		for col in range(9):
-			texteval = f"form.field{row+1}{col+1}"
+		for row in range(9):
+			for col in range(9):
+				texteval = f"form.field{row+1}{col+1}"
 
-			if eval(texteval).render_kw != {"disabled": "disabled"}:
-				allfields = request.form
-				mydata = allfields[f"field{row+1}{col+1}"]
-				eval(texteval).data = mydata
+				if eval(texteval).render_kw != {"disabled": "disabled"}:
+					allfields = request.form
+					mydata = allfields[f"field{row+1}{col+1}"]
+					eval(texteval).data = mydata
 
-			try:
-				all_data.append(int(eval(texteval).data))
-			except:
-				all_data.append(0)
+				try:
+					all_data.append(int(eval(texteval).data))
+				except:
+					all_data.append(0)
 
-	current_solution = np.array(all_data).reshape(9,9)
+		current_solution = np.array(all_data).reshape(9,9)
 
-	if (current_solution == form.Puzzle.solution).all():
-		form.is_solved = "SOLVED!!"
-				
-	for i in np.arange(1,10):
-		check_for_value = ((current_solution == i) == (form.Puzzle.solution == i)).all()
-		texteval = f"form.valid_{i}"
-		eval(texteval).data = check_for_value
-	
+		if (current_solution == form.Puzzle.solution).all():
+			form.is_solved = "SOLVED!!"
+					
+		for i in np.arange(1,10):
+			check_for_value = ((current_solution == i) == (form.Puzzle.solution == i)).all()
+			texteval = f"form.valid_{i}"
+			eval(texteval).data = check_for_value
+		
+		return render_template("sudoku.html", form = form)
+
 	return render_template("sudoku.html", form = form)
 
-	# return render_template("sudoku.html", form = form)
 
 @app.route("/sudoku/reset")
 def sudoku_reset():
@@ -195,28 +208,36 @@ def sudoku_new():
 def fifa():
 
 	form = Filter(csrf_enabled=False)
-
 	if form.validate_on_submit():
 		
 		options = []
-		logic_exceptions = ["short_name"]
-		for db_field, form_field in form.all_fields.items():
+		for db_field, form_field in form.all_fields["exact_match"].items():
 			if eval(f"form.{form_field}").data != "Select all":
 				options.append((db_field, eval(f"form.{form_field}").data))
-
 		if len(options) > 0:
-			
 			for db_field, form_value in options:
-				if db_field not in logic_exceptions:
-					try:
-						form.working_df = form.working_df[form.working_df[db_field] == int(form_value)]
-					except:
-						form.working_df = form.working_df[form.working_df[db_field] == form_value]
-				elif db_field == "short_name":
-					form.working_df = form.working_df[ (form.working_df[db_field].str.lower()).str.contains(form_value)]
+				try:
+					form.working_df = form.working_df[form.working_df[db_field] == int(form_value)]
+				except:
+					form.working_df = form.working_df[form.working_df[db_field] == form_value]
 
-			for db_field, form_field in form.all_fields.items():
-				eval(f"form.{form_field}").choices = form.FIFA_BASE.set_options(form.working_df, db_field)
+		for db_field, form_field in form.all_fields["like_match"].items():
+			if len(eval(f"form.{form_field}").data) > 0:
+				form_value = eval(f"form.{form_field}").data
+				form.working_df = form.working_df[ (form.working_df[db_field].str.lower()).str.contains(form_value)]
+
+		for db_field, form_field in form.all_fields["min_max_match"].items():
+			if (eval(f"form.{form_field[0]}").data is not None) and (eval(f"form.{form_field[1]}").data is not None):
+				form_value_min = eval(f"form.{form_field[0]}").data
+				print("Min:", db_field, form_value_min)
+				form_value_max = eval(f"form.{form_field[1]}").data
+				print("Max:", db_field, form_value_max)
+				form.working_df = form.working_df[form.working_df[db_field] >= form_value_min]
+				form.working_df = form.working_df[form.working_df[db_field] <= form_value_max]
+				
+
+		for db_field, form_field in form.all_fields["exact_match"].items():
+			eval(f"form.{form_field}").choices = form.FIFA_BASE.set_options(form.working_df, db_field)
 
 
 
@@ -224,7 +245,7 @@ def fifa():
 			returnable = form.working_df.iloc[:100, :]
 		else:
 			returnable = form.working_df
-		print(form.filter_overall_max.data)
+
 		return render_template("fifa.html", fifa_data = returnable, form = form)
 	
 	return render_template("fifa.html", fifa_data = form.main_df.iloc[:100,:], form = form)
