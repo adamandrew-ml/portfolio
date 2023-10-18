@@ -1,0 +1,201 @@
+:root {
+	--gray: #7a7d7dff;
+	--rich-black: #0c1618ff;
+	--ivory: #fffce8ff;
+	--claret: #990d35ff;
+	--claretvilla: #490024ff;
+	--rusty-red: #d52941ff;
+	--lightcoral: #E37884ff;
+	--lightcoral-t : #E3788422;
+	--mistyrose: #F8DDE0ff;
+	--white: #fff;
+	--transition-speed: 1s;
+  --navbarheight: 30px;
+  --outercontpadding: 50px;
+}
+
+body {
+	margin: 0;
+	font-family: 'Roboto';
+}
+
+a {
+	text-decoration: none;
+}
+
+.whitebox {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-image: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1));
+}
+
+.navbartop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+  margin: 5px 0px 20px 0px;
+	padding: 0;
+  height: var(--navbarheight);
+}
+
+.navbartop ul {
+  list-style-type: none;
+  display: flex;
+	text-align: center;
+	justify-content: center;
+  margin: 0px;
+  padding: 0px;
+  height: (--navbarheight);
+  width: 100%;
+}
+
+.navbartop li {
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  line-height: var(--navbarheight);
+  width: 100%;
+}
+
+.navbartop a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  text-align: center;
+  line-height: var(--navbarheight);
+  margin: 0px;
+  padding: 0px;
+}
+
+.links-internal, .links-external {
+  display: flex;
+  height: var(--navbarheight);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.links-internal {
+  width: 90%;
+  background-color: var(--claret);
+  color: white;
+}
+
+.links-internal li {
+  width: 100%;
+}
+
+.links-internal li:hover {
+  cursor: pointer;
+  color: var(--claret);
+  background-color: white;
+}
+
+.links-external {
+  width: 10%;
+  background-color: white;
+  color: var(--claret);
+}
+
+.links-external ul {
+  text-align: center;
+  justify-content: center;
+  max-height: var(--navbarheight);
+}
+
+.links-external img {
+  width: var(--navbarheight);
+  height: var(--navbarheight);
+  object-fit: contain;
+  margin: 0px;
+  padding: 0px;
+}
+
+.outer-container {
+	padding-top: var(--outercontpadding);
+	margin: auto;
+	width: 90%;
+	font-family: Roboto;
+	font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  display: inline;
+	width: 70%;
+}
+
+
+.about-image {
+	padding: 20px 0px;
+	text-align: center;
+	justify-content: center;
+}
+
+#about-img {
+	height: 310px;
+	width: 50%;
+	object-fit: cover;
+	object-position: 0 20%;
+	border-radius: 50px;
+}
+
+.about-textbox {
+	text-align: justify;
+  margin-bottom: 30px;
+}
+
+.about-icon-boxes {
+	margin-top: 20px;
+	display: flex;
+  flex-wrap: wrap;
+	width: 100%;
+	text-align: center;
+	justify-content: space-around;
+	list-style-type: none;
+}
+
+.about-icon-boxes img {
+  margin: 5px 10px;
+	object-fit:fill;
+	height: 40px;
+}
+
+
+
+
+
+
+
+
+.fifa-container {
+  width: 100%;
+}
+
+
+.mydatatable {
+  margin-top: 10px;
+  font-family: Helvetica;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.mydatatable th, td {
+  padding: 0px 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.mydatatable th {
+  background-color: #333333;
+  border-bottom: 3px solid black;
+  color: white;
+}
+
+
