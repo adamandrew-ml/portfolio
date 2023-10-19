@@ -1,0 +1,53 @@
+[
+  {
+    "league_name": "Prototype",
+    "clubs": [
+      {"club_name": "", "position": 1},
+      {"club_name": "", "position": 2},
+      {"club_name": "", "position": 3},
+      {"club_name": "", "position": 4},
+      {"club_name": "", "position": 5},
+      {"club_name": "", "position": 6},
+      {"club_name": "", "position": 7},
+      {"club_name": "", "position": 8},
+      {"club_name": "", "position": 9},
+      {"club_name": "", "position": 10},
+      {"club_name": "", "position": 11},
+      {"club_name": "", "position": 12},
+      {"club_name": "", "position": 13},
+      {"club_name": "", "position": 14},
+      {"club_name": "", "position": 15},
+      {"club_name": "", "position": 16},
+      {"club_name": "", "position": 17},
+      {"club_name": "", "position": 18},
+      {"club_name": "", "position": 19},
+      {"club_name": "", "position": 20}
+    ]
+  }, {
+    "league_name": "English Premier League",
+    "clubs": [
+      {"club_name": "Manchester City", "position": 1},
+      {"club_name": "Manchester United", "position": 2},
+      {"club_name": "Liverpool", "position": 3},
+      {"club_name": "Chelsea", "position": 4},
+      {"club_name": "Leicester City", "position": 5},
+      {"club_name": "West Ham United", "position": 6},
+      {"club_name": "Tottenham Hotspur", "position": 7},
+      {"club_name": "Arsenal", "position": 8},
+      {"club_name": "Leeds United", "position": 9},
+      {"club_name": "Everton", "position": 10},
+      {"club_name": "Aston Villa", "position": 11},
+      {"club_name": "Newcastle United", "position": 12},
+      {"club_name": "Wolverhampton Wanderers", "position": 13},
+      {"club_name": "Crystal Palace", "position": 14},
+      {"club_name": "Southampton", "position": 15},
+      {"club_name": "Brighton & Hove Albion", "position": 16},
+      {"club_name": "Burnley", "position": 17},
+      {"club_name": "Fulham", "position": 18},
+      {"club_name": "West Bromwich Albion", "position": 19},
+      {"club_name": "Sheffield United", "position": 20}
+    ]
+  }, {
+
+  }
+]
