@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-const Filters = ({getFilterArgYear, getFilterArgClub}) => {
+const Filters = ({getFilterArgYear, getFilterArgClub, currentData}) => {
 
   // YEAR
   const filterOptsYear = [
@@ -8,7 +8,6 @@ const Filters = ({getFilterArgYear, getFilterArgClub}) => {
     {value: 2020, label: 2020},
     {value: 2021, label: 2021},
   ];
-
   const handleonChangeYear = (selectedYear) => {getFilterArgYear(selectedYear.value);}
 
   // CLUB
@@ -16,9 +15,10 @@ const Filters = ({getFilterArgYear, getFilterArgClub}) => {
     {value: "Liverpool", label: "Liverpool"},
     {value: "Everton", label: "Everton"},
     {value: "Chelsea", label: "Chelsea"},
+    {value: "Aston Villa", label: "Aston Villa"},
   ];
-
   const handleonChangeClub = (selectedClub) => {getFilterArgClub(selectedClub.value);}
+
 
   return (
     <div>

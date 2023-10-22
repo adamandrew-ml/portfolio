@@ -179,23 +179,39 @@ a {
   width: 100%;
 }
 
-
-.mydatatable {
-  margin-top: 10px;
-  font-family: Helvetica;
-  border-collapse: collapse;
+.card-stack {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
+  margin: auto;
+  justify-content: space-evenly;
 }
 
-.mydatatable th, td {
-  padding: 0px 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.mydatatable th {
-  background-color: #333333;
-  border-bottom: 3px solid black;
+.individual-card {
+  display: flex;
+  height: 250px;
+  background-color: var(--claret);
   color: white;
+  width: 22%;
+  margin: 10px;
+  border-radius: 20px;
 }
 
+.player-image {
+  /* display: flex; */
+  margin: auto;
+  margin-top: 0px;
+  width: 100%;
+  border-radius: 5px;
+  padding-bottom: 2px solid white;
+}
 
+.player-image img {
+  width:40%;
+  background-color: white;
+}
+
+.player-details {
+  display: inline;
+  text-align: top;
+}

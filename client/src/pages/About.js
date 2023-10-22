@@ -1,11 +1,9 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import techIcons from "./data/image_locations.json"
 
 
 const About = () => {
 
-  const someList = [1,2,3,4,5,6,7,8,9];
   return (
     <div className="outer-container">
       <div className="about-container">

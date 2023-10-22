@@ -55,8 +55,8 @@ class Query:
         return self
 
     def get_results(self):
-        returnable = {"Things": [{k: v for k, v in zip(
-            [i[0] for i in self.query.description], i)} for i in self.results]}
+        returnable = [{k: v for k, v in zip(
+            [i[0] for i in self.query.description], i)} for i in self.results]
         return returnable
 
 
