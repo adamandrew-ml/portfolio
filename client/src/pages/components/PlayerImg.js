@@ -19,9 +19,7 @@ const PlayerImg = ({player}) => {
   return (
     <div className="player-image">
       <img alt="Image not found"
-        data-src={img_url1} data-srcset={String(img_url2) + " 2x, " + String(img_url3) + " 3x "}
-        src={img_url1} data-root="https://cdn.sofifa.net/"
-        data-type="player" class="loaded" srcset={img_url2 + " 2x " + img_url3 + " 3x"} data-was-processed="true">
+        data-src={img_url1} src={img_url1} data-root="https://cdn.sofifa.net/">
       </img>
     </div>
   )

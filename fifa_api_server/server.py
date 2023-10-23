@@ -9,11 +9,6 @@ app = Flask(__name__)
 app.secret_key = "temp"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 
-# class User(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(80), unique=True, nullable=False)
-#     email = db.Column(db.String(120), unique=True, nullable=False)
-
 
 class Query:
     def __init__(self, db_path):
@@ -30,7 +25,7 @@ class Query:
 
         self.sql_query_open = "select * from players where 1=1 "
         self.query_main = ""
-        self.sql_query_close = " order by overall desc limit 100;"
+        self.sql_query_close = " order by overall desc limit 10000;"
 
     def convert_to_sql(self, field_name, operator, value):
         value = str(value).lower()
@@ -62,10 +57,19 @@ class Query:
 
 @app.route("/query", methods=["GET", "POST"])
 def query():
-    args_dict = request.args.to_dict()
+    args_dict_raw = request.args.to_dict()
+    args_dict_use = {}
+    # print("\n")
+    for k, v in args_dict_raw.items():
+        prepped_v = str(v).lower().replace("-", "").strip()
+        print(k, prepped_v)
+        if prepped_v not in ["", "select all", "selectall"]:
+            args_dict_use[k] = v
     query_class = Query("fifa.db")
-    myquery = query_class.set_arguments(args_dict).set_query()
+    myquery = query_class.set_arguments(args_dict_use).set_query()
     returnable = myquery.execute_query().get_results()
+    print(len(returnable))
+    # print("\n")
     return jsonify(returnable)
 
 
