@@ -13,16 +13,14 @@ const PlayerImg = ({player}) => {
   const second = String(padded).substring(3,6);
   const yearPart = String(player.year).substring(2,4);
   const img_url1 = String("https://cdn.sofifa.net/players/" + first + "/" + String(padded).substring(3,6) + "/" + yearPart + "_120.png");
-  const img_url2 = String("https://cdn.sofifa.net/players/" + first + "/" + String(padded).substring(3,6) + "/" + yearPart + "_240.png");
-  const img_url3 = String("https://cdn.sofifa.net/players/" + first + "/" + String(padded).substring(3,6) + "/" + yearPart + "_360.png");
 
   return (
     <div className="player-image">
-      <img alt="Image not found"
-        data-src={img_url1} src={img_url1} data-root="https://cdn.sofifa.net/">
+      <img alt="Image not found" src={img_url1} data-root="https://cdn.sofifa.net/">
       </img>
     </div>
   )
+
 }
 
 export default PlayerImg

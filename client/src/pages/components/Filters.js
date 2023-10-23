@@ -2,29 +2,25 @@ import Select from 'react-select';
 import DropDownSingle from './DropDownSingle'
 import { useState, useEffect } from 'react'
 
-const Filters = ({playerData, filterProps}) => {
+const Filters = ({currentSelections, playerData, filterProps}) => {
 
   const getAttribute = (items, attribute) => {
     const all_attributes = items.map(item => item[attribute]);
     const getUnique = (value, index, array) => {return array.indexOf(value) === index};
     const unique_attributes = all_attributes.filter(getUnique);
     const myObject = unique_attributes.sort().map(item => ({value: item, label: item}));
-    console.log(myObject);
     return myObject;
   };
 
+  const selectionDefault = [{value: "Select all", label: "Select all"}];
 
-  // const uniqueClubs = getAttribute(playerData, "club_name").map(item => item.value)
-  // console.log(uniqueClubs);
-  
-  // REPLACE WITH QUERYING LOCAL DATA, API CALL SLOW AT HIGH VOLUMES
-  const [filterOptsYear, setYearData] = useState([{}]);
+  const [filterOptsYear, setYearData] = useState(selectionDefault);
   useEffect(() => {setYearData(getAttribute(playerData, "year"))}, [playerData]);
 
-  const [filterOptsClub, setClubData] = useState([{}]);
+  const [filterOptsClub, setClubData] = useState(selectionDefault);
   useEffect(() => {setClubData(getAttribute(playerData, "club_name"))}, [playerData]);
 
-  const [filterOptsNaty, setNatyData] = useState([{}]);
+  const [filterOptsNaty, setNatyData] = useState(selectionDefault);
   useEffect(() => {setNatyData(getAttribute(playerData, "nationality"))}, [playerData]);
 
 
@@ -32,9 +28,9 @@ const Filters = ({playerData, filterProps}) => {
   return (
     <div className="filter-sidebar">
       <p>Filters</p>
-      <DropDownSingle selectLabel="Year" optionsData={filterOptsYear} funcOnChange={filterProps.Year}/>
-      <DropDownSingle selectLabel="Club" optionsData={filterOptsClub} funcOnChange={filterProps.Club}/>
-      <DropDownSingle selectLabel="Nationality" optionsData={filterOptsNaty} funcOnChange={filterProps.Naty}/>
+      <DropDownSingle selectLabel="Year" currentSelection={currentSelections.Year} optionsData={filterOptsYear} funcOnChange={filterProps.Year}/>
+      <DropDownSingle selectLabel="Club" currentSelection={currentSelections.Club} optionsData={filterOptsClub} funcOnChange={filterProps.Club}/>
+      <DropDownSingle selectLabel="Nationality" currentSelection={currentSelections.Naty} optionsData={filterOptsNaty} funcOnChange={filterProps.Naty}/>
     </div>
   )
 }

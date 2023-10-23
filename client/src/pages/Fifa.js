@@ -20,15 +20,21 @@ const Fifa = () => {
     "Naty": getFilterArgNaty
   }
 
+  const currentSelections = {
+    "Year": filterDataYear,
+    "Club": filterDataClub,
+    "Naty": filterDataNaty,
+  }
+
   const [playerData, setPlayerData] = useState([{}])
   useEffect(() => {
     fetch(`/query?year__eql=${filterDataYear}&club_name__eql=${filterDataClub}&nationality__eql=${filterDataNaty}`).then(
     res => res.json()).then(playerData => {setPlayerData(playerData)})}, [filterDataYear, filterDataClub, filterDataNaty]);
-
+  
   return (
     <div className="outer-container">
       <div className="fifa-container">
-        <Filters filterProps={filterProps} playerData={playerData}/>
+        <Filters currentSelections={currentSelections} filterProps={filterProps} playerData={playerData}/>
         <CardStack playerData={playerData}/>
       </div>
     </div>
