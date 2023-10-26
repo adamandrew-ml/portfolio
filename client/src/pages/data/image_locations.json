@@ -1,22 +1,32 @@
 [
-  {"techname": "python",     "iconsrc": "/images/python_logo.svg"},
-  {"techname": "flask",      "iconsrc": "/images/flask_logo.svg.png"},
-  {"techname": "azure",      "iconsrc": "/images/azure_logo.svg.png"},
-  {"techname": "databricks", "iconsrc": "/images/databricks_logo.png"},
-  {"techname": "synapse",    "iconsrc": "/images/synapse_logo.webp"},
-  {"techname": "mlflow",     "iconsrc": "/images/mlflow_logo.png"},
-  {"techname": "powerapps",  "iconsrc": "/images/powerapps_logo.webp"},
-  {"techname": "powerbi",    "iconsrc": "/images/powerbi_logo.png"},
-  {"techname": "sqlserver",  "iconsrc": "/images/sql_server_logo.png"},
-  {"techname": "openai",     "iconsrc": "/images/openai_logo.svg.png"},
-  {"techname": "sklearn",    "iconsrc": "/images/sklearn_logo.svg.png"},
-  {"techname": "javascript", "iconsrc": "/images/javascript_logo.png"},
-  {"techname": "react",      "iconsrc": "/images/react_logo.png"},
-  {"techname": "css",        "iconsrc": "/images/css_logo.png"},
-  {"techname": "html",       "iconsrc": "/images/html_logo.png"},
-  {"techname": "mongodb",    "iconsrc": "/images/mongodb_logo.svg.png"},
-  {"techname": "aws",        "iconsrc": "/images/aws_logo.svg.png"},
-  {"techname": "pytorch",    "iconsrc": "/images/pytorch_logo.png"},
-  {"techname": "tensorflow", "iconsrc": "/images/tensorflow_logo.svg.png"},
-  {"techname": "keras",      "iconsrc": "/images/keras_logo.png"}
+  {
+    "group" : "Data Analytics", "tech": [
+      {"techname": "python",     "iconsrc": "/images/python_logo.svg"},
+      {"techname": "flask",      "iconsrc": "/images/flask_logo.svg.png"}
+    ]
+  }, {
+    "group" : "Machine Learning and AI", "tech": [
+      {"techname": "mlflow",     "iconsrc": "/images/mlflow_logo.png"},
+      {"techname": "openai",     "iconsrc": "/images/openai_logo.svg.png"},
+      {"techname": "sklearn",    "iconsrc": "/images/sklearn_logo.svg.png"},
+      {"techname": "pytorch",    "iconsrc": "/images/pytorch_logo.png"},
+      {"techname": "tensorflow", "iconsrc": "/images/tensorflow_logo.svg.png"},
+      {"techname": "keras",      "iconsrc": "/images/keras_logo.png"}
+    ]
+  }, {
+    "group" : "Data Engineering", "tech": [
+      {"techname": "azure",      "iconsrc": "/images/azure_logo.svg.png"},
+      {"techname": "aws",        "iconsrc": "/images/aws_logo.svg.png"},
+      {"techname": "mongodb",    "iconsrc": "/images/mongodb_logo.svg.png"},
+      {"techname": "databricks", "iconsrc": "/images/databricks_logo.png"},
+      {"techname": "synapse",    "iconsrc": "/images/synapse_logo.webp"}
+    ]
+  }, {
+    "group" : "Web Development", "tech": [
+      {"techname": "javascript", "iconsrc": "/images/javascript_logo.png"},
+      {"techname": "react",      "iconsrc": "/images/react_logo.png"},
+      {"techname": "css",        "iconsrc": "/images/css_logo.png"},
+      {"techname": "html",       "iconsrc": "/images/html_logo.png"}
+    ]
+  }
 ]

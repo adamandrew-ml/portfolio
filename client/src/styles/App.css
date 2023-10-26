@@ -1,14 +1,9 @@
 :root {
-	--gray: #7a7d7dff;
-	--rich-black: #0c1618ff;
-	--ivory: #fffce8ff;
-	--claret: #990d35ff;
-	--claretvilla: #490024ff;
-	--rusty-red: #d52941ff;
-	--lightcoral: #E37884ff;
-	--lightcoral-t : #E3788422;
-	--mistyrose: #F8DDE0ff;
-	--white: #fff;
+	--grey: #716969;
+	--black: #011627;
+	--white: #FDFFFC;
+  --green: #44A1A0;
+  --blue: #1B98E0;
 	--transition-speed: 1s;
   --navbarheight: 30px;
   --outercontpadding: 50px;
@@ -31,35 +26,19 @@ a {
 }
 
 .navbartop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;	
   margin: 5px 0px 20px 0px;
 	padding: 0;
   height: var(--navbarheight);
+  background-color: var(--white);
 }
 
 .navbartop ul {
   list-style-type: none;
   display: flex;
-	text-align: center;
-	justify-content: center;
   margin: 0px;
   padding: 0px;
   height: (--navbarheight);
-  width: 100%;
-}
-
-.navbartop li {
-  margin: auto;
-  text-align: center;
-  text-decoration: none;
-  color: inherit;
-  line-height: var(--navbarheight);
   width: 100%;
 }
 
@@ -82,9 +61,10 @@ a {
 }
 
 .links-internal {
-  width: 90%;
-  background-color: var(--claret);
-  color: white;
+  float: left;
+  width: 30%;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .links-internal li {
@@ -93,20 +73,29 @@ a {
 
 .links-internal li:hover {
   cursor: pointer;
-  color: var(--claret);
-  background-color: white;
+  color: var(--blue);
+  font-size: 18px;
+  -webkit-transition: color 0.3s, font-size 0.3s;
+  -moz-transition: color 0.3s, font-size 0.3s;
+    -o-transition: color 0.3s, font-size 0.3s;
+       transition: color 0.3s, font-size 0.3s;
 }
 
 .links-external {
+  float: right;
   width: 10%;
   background-color: white;
-  color: var(--claret);
+  color: var(--blue);
 }
 
 .links-external ul {
   text-align: center;
   justify-content: center;
   max-height: var(--navbarheight);
+}
+
+.links-external li {
+  width: 100%;
 }
 
 .links-external img {
@@ -117,56 +106,132 @@ a {
   padding: 0px;
 }
 
+.links-external img:hover {
+  cursor: pointer;
+}
+
+
+
 .outer-container {
 	padding-top: var(--outercontpadding);
+  align-items: center;
 	margin: auto;
 	width: 90%;
 	font-family: Roboto;
 	font-size: 16px;
-  display: flex;
-  justify-content: center;
 }
 
 .about-container {
-  display: inline;
-	width: 70%;
+  margin: auto;
+  display: flex;
+	width: 90%;
+  /* background-color: #ccc; */
 }
 
-
 .about-image {
-	padding: 20px 0px;
+  width: 30%;
+  min-width: 335px;
+  margin: 20px;
 	text-align: center;
 	justify-content: center;
 }
 
 #about-img {
-	height: 310px;
-	width: 50%;
+	height: 270px;
+	width: 100%;
 	object-fit: cover;
 	object-position: 0 20%;
 	border-radius: 50px;
 }
 
 .about-textbox {
-	text-align: justify;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  min-width: 720px;
+  /* background-color: #bbb; */
+  justify-content: center;
 }
 
-.about-icon-boxes {
-	margin-top: 20px;
+.about-textbox p {
+  margin: 10px 0px;
+  padding: 0px;
+  border: 0px;
+  text-align: justify;
+}
+
+.tech-stack-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 0px;
+}
+
+
+.tech-stack-container ul {
+  margin: 0px;
 	display: flex;
   flex-wrap: wrap;
-	width: 100%;
 	text-align: center;
 	justify-content: space-around;
 	list-style-type: none;
+  background-color: #aaa;
 }
 
-.about-icon-boxes img {
-  margin: 5px 10px;
-	object-fit:fill;
-	height: 40px;
+
+.tech-stack-groups {
+  width: 22%;
+  min-width: 200px;
+  margin: 0px;
+  padding: 0px;
+	display: flex;
+  flex-direction: column;
+	list-style-type: none;
+  justify-content: space-evenly;
+  background-color: #ddd;
 }
+
+.tech-stack-groups li {
+  margin: 5px 0px 5px 20px;
+  padding: 0px 10px;
+  height: 20%;
+  min-height: 40px;
+  text-align: left;
+  line-height: 40px;
+  background-color: red;
+}
+
+.tech-stack-specifics {
+  display: block;
+  width: 80%;
+  min-width: 200px;
+  margin: 0px 10px 0px 50px;
+  padding: 0px;
+	list-style-type: none;
+}
+
+.tech-stack-specifics ul {
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.tech-stack-specifics li {
+  margin: 0px 2px;
+  padding: 0px;
+}
+
+.tech-stack-specifics img{
+  height: 40px;
+  object-fit: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+.capability-desc {
+  background-color: #333;
+}
+
 
 
 
@@ -203,7 +268,7 @@ a {
 .individual-card {
   display: flex;
   height: 250px;
-  background-color: var(--claret);
+  background-color: var(--blue);
   color: white;
   width: 22%;
   margin: 10px;
