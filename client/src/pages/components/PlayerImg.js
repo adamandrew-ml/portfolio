@@ -10,14 +10,12 @@ const PlayerImg = ({player}) => {
 
   const padded = pad(player.sofifa_id, 6);
   const first = String(padded).substring(0,3);
-  const second = String(padded).substring(3,6);
   const yearPart = String(player.year).substring(2,4);
   const img_url1 = String("https://cdn.sofifa.net/players/" + first + "/" + String(padded).substring(3,6) + "/" + yearPart + "_120.png");
 
   return (
     <div className="player-image">
-      <img alt="Image not found" src={img_url1} data-root="https://cdn.sofifa.net/">
-      </img>
+      <img alt="Nothing here" src={img_url1} data-root="https://cdn.sofifa.net/" />
     </div>
   )
 

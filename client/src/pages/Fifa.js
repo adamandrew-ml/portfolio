@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Filters from './components/Filters'
 import CardStack from './components/CardStack';
+import '../styles/Fifa.css'
 
 const Fifa = () => {
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "./styles/App.css"
-// import App from './App';
+import "./styles/Layout.css"
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@fontsource/roboto"; // Defaults to weight 400
@@ -34,6 +33,7 @@ root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  
 );
 
 

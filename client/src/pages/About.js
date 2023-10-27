@@ -1,6 +1,6 @@
 import React from 'react'
-import TechStack from './components/TechStack'
-
+import FindOutMore from './components/FindOutMore'
+import "../styles/About.css"
 
 const About = () => {
 
@@ -8,7 +8,7 @@ const About = () => {
     <div className="outer-container">
       <div className="about-container">
         <div className = "about-image">
-          <img id = "about-img" src={process.env.PUBLIC_URL + "/images/aa_img.jpeg"}/>
+          <img alt="Nothing here" id = "about-img" src={process.env.PUBLIC_URL + "/images/aa_img.jpeg"}/>
         </div>
         <div className = "about-textbox">
           <p style={{"fontSize": "30px"}}>Adam Andrew, Leeds UK</p>
@@ -18,8 +18,7 @@ const About = () => {
           <p style={{"fontSize": "18px"}}>Above all else, Adam is able to bring data to life for technical and non-technical audiences</p>
         </div>
       </div>
-
-      <TechStack />
+      <FindOutMore />
 
     </div>
   )

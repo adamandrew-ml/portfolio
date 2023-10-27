@@ -1,0 +1,130 @@
+:root {
+	--grey: #716969;
+	--black: #011627;
+	--white: #FDFFFC;
+  --green: #44A1A0;
+  --blue: #1B98E0;
+	--transition-speed: 1s;
+  --navbarheight: 30px;
+  --outercontpadding: 50px;
+  --CHECKBORDERS: none;
+  /* --CHECKBORDERS: 1px solid black; */
+}
+
+body {
+	margin: 0;
+	font-family: 'Roboto';
+}
+
+a {
+	text-decoration: none;
+}
+
+.whitebox {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-image: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1));
+}
+
+.navbartop {
+	width: 100%;
+  margin: 5px 0px 20px 0px;
+	padding: 0;
+  height: var(--navbarheight);
+  background-color: var(--white);
+  border: var(--CHECKBORDERS);
+}
+
+.navbartop ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  height: (--navbarheight);
+  width: 100%;
+}
+
+.navbartop a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  text-align: center;
+  line-height: var(--navbarheight);
+  margin: 0px;
+  padding: 0px;
+}
+
+.links-internal, .links-external {
+  display: flex;
+  height: var(--navbarheight);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: var(--CHECKBORDERS);
+}
+
+.links-internal {
+  float: left;
+  width: 30%;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.links-internal li {
+  width: 100%;
+}
+
+.links-internal li:hover {
+  cursor: pointer;
+  color: var(--blue);
+  -webkit-transition: color 0.3s, font-size 0.3s;
+  -moz-transition: color 0.3s, font-size 0.3s;
+    -o-transition: color 0.3s, font-size 0.3s;
+       transition: color 0.3s, font-size 0.3s;
+}
+
+.links-external {
+  float: right;
+  width: 10%;
+  background-color: white;
+  color: var(--blue);
+}
+
+.links-external ul {
+  text-align: center;
+  justify-content: center;
+  max-height: var(--navbarheight);
+}
+
+.links-external li {
+  width: 100%;
+}
+
+.links-external img {
+  width: var(--navbarheight);
+  height: var(--navbarheight);
+  object-fit: contain;
+  margin: 0px;
+  padding: 0px;
+}
+
+.links-external img:hover {
+  cursor: pointer;
+}
+
+
+
+.outer-container {
+	padding-top: var(--outercontpadding);
+  align-items: center;
+	margin: auto;
+	width: 90%;
+	font-family: Roboto;
+	font-size: 16px;
+  border: var(--CHECKBORDERS);
+}
+
+
+
+

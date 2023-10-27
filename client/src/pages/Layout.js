@@ -38,7 +38,7 @@ const Layout = () => {
             {externalNavlinks.map((item, i) => (
               <li key={i}>
                 <a href={item.linkout} target="_blank" rel="noreferrer">
-                  <img src={item.value}/>
+                  <img alt="Nothing here" src={item.value}/>
                 </a>
               </li>
             ))}
