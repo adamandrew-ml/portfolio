@@ -9,14 +9,14 @@ import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 const FindOutMore = () => {
 
   const [isClicked, setIsClicked] = useState(false);
-
+  
   return (
     <div className="tech-details-expandable">
       <div id="find-out" onClick={() => {setIsClicked(!isClicked);}}>
         <text>Find out more</text>
         <FontAwesomeIcon icon={isClicked ? faCaretUp : faCaretDown} />
       </div>
-      {isClicked ? <TechStack/>  : <></>}
+      {isClicked ? <TechStack isClicked={isClicked}/> : <></>}
     </div>
   )
 }

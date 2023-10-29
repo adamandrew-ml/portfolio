@@ -19,7 +19,7 @@ const About = () => {
         </div>
       </div>
       <FindOutMore />
-
+    
     </div>
   )
 }

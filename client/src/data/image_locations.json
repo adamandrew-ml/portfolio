@@ -1,7 +1,7 @@
 [
   {
     "group" : "Data Analytics",
-    "capability" : "Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text. Placeholder text.",
+    "capability" : "Since 2012, Adam has used analytics to turn data into compelling stories, insights and applications for ongoing benefit. This includes discrete analytics projects, using data to answer known questions, and also as part of broader digital transformation projects to guide strategic decisions",
     "tech": [
       {"techname": "python",     "iconsrc": "/images/python_logo.svg"},
       {"techname": "flask",      "iconsrc": "/images/flask_logo.svg.png"},
