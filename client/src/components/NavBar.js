@@ -1,11 +1,9 @@
-import React from 'react'
-import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+const NavBar = () => {
   const internalNavlinks = [
-    {"value": "About", "linkout": "/"},
-    {"value": "Sudoku", "linkout": "sudoku"},
-    {"value": "FIFA","linkout": "fifa"},
+    {"value": "About", "linkout": "#about"},
+    {"value": "Sudoku", "linkout": "#sudoku"},
+    {"value": "FIFA","linkout": "#fifa"},
     {"value": "Project","linkout": "#anotherprojecttbd"},
     {"value": "Project","linkout": "#anotherprojecttbd"}
   ]
@@ -46,9 +44,8 @@ const Layout = () => {
         </div>
       </div>
     </div>
-    <Outlet />
     </>
   )
 };
 
-export default Layout;
+export default NavBar;

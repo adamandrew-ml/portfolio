@@ -1,5 +1,5 @@
 import React from 'react'
-import techIcons from "../../data/image_locations.json"
+import techIcons from "../data/image_locations.json"
 import { useState, useEffect } from 'react' 
 
 const TechStack = (FOMisClicked) => {

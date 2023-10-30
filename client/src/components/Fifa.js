@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import Filters from './components/Filters'
-import CardStack from './components/CardStack';
+import Filters from './Filters'
+import CardStack from './CardStack';
 import '../styles/Fifa.css'
 
 const Fifa = () => {
@@ -34,7 +34,7 @@ const Fifa = () => {
   
   return (
     <div className="outer-container">
-      <div className="fifa-container">
+      <div id="fifa">
         <Filters currentSelections={currentSelections} filterProps={filterProps} playerData={playerData}/>
         <CardStack playerData={playerData}/>
       </div>

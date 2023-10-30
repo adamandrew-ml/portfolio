@@ -1,0 +1,41 @@
+:root {
+	--grey: #716969;
+	--black: #011627;
+	--white: #FDFFFC;
+  --green: #44A1A0;
+  --blue: #1B98E0;
+	--transition-speed: 1s;
+  --navbarheight: 30px;
+  --outercontpadding: 0px;
+}
+
+body {
+	margin: 0;
+	font-family: 'Roboto';
+}
+
+a {
+	text-decoration: none;
+}
+
+.whitebox {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-image: linear-gradient(to top, rgba(255,255,255,0),rgba(255,255,255,1));
+}
+
+.outer-container {
+  display: block;
+	padding-top: var(--outercontpadding);
+  align-items: center;
+	margin: auto;
+	width: 90%;
+	font-family: Roboto;
+	font-size: 16px;
+  border: var(--CHECKBORDERS);
+}
+
+
+
+

@@ -3,6 +3,7 @@ import TechStack from './TechStack'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import '../styles/FindOutMore.css'
 // https://fontawesome.com/v5/docs/web/use-with/react
 
 
@@ -11,7 +12,7 @@ const FindOutMore = () => {
   const [isClicked, setIsClicked] = useState(false);
   
   return (
-    <div className="tech-details-expandable">
+    <div className="find-out-more-expandable">
       <div id="find-out" onClick={() => {setIsClicked(!isClicked);}}>
         <text>Find out more</text>
         <FontAwesomeIcon icon={isClicked ? faCaretUp : faCaretDown} />
