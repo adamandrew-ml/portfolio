@@ -1,12 +1,20 @@
 
 #fifa {
+  display: block;
+  height: 700px;
   width: 100%;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  background-color: #eee;
+}
+
+.fifa-container {
   display: flex;
 }
 
 .filter-sidebar {
   width: 20%;
-  background-color: green;
+  background-color: #ddd;
   padding: 0px 5px;
   margin-right: 5px;
 }
@@ -14,24 +22,27 @@
 .card-stack {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  margin: auto;
+  width: 40%;
   justify-content: space-evenly;
+  align-items: center;
   background-color: #ddd;
   overflow: auto;
   position: sticky;
-  height: 600px;
-  /* top: 150px; */
+  height: 680px;
+}
+
+.analysis {
+  width: 40%;
 }
 
 .individual-card {
   display: flex;
-  height: 250px;
+  height: 180px;
   background-color: var(--blue);
   color: white;
-  width: 22%;
-  margin: 10px;
-  border-radius: 20px;
+  width: 30%;
+  margin: 5px;
+  border-radius: 10px;
 }
 
 .individual-card:hover {

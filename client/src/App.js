@@ -1,11 +1,19 @@
 import React from 'react'
-import NavBar from './components/NavBar'
-import About from './components/About'
-import FindOutMore from './components/FindOutMore'
-import Fifa from './components/Fifa'
 
+import NavBar from './pages/NavBar'
 import "./styles/NavBar.css"
+
+import About from './pages/About'
 import "./styles/About.css"
+
+import Engagements from './pages/Engagements'
+import "./styles/Engagements.css"
+
+import Analytics from './pages/Analytics'
+import "./styles/Analytics.css"
+
+
+
 
 
 const App = () => {
@@ -14,9 +22,9 @@ const App = () => {
     <>
     <NavBar />
     <div className="outer-container">
-      <About />
-      <FindOutMore />
-      <Fifa />
+      <About/>
+      <Engagements />
+      <Analytics />
     </div>
     </>
   )

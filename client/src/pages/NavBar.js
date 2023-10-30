@@ -2,8 +2,8 @@
 const NavBar = () => {
   const internalNavlinks = [
     {"value": "About", "linkout": "#about"},
-    {"value": "Sudoku", "linkout": "#sudoku"},
-    {"value": "FIFA","linkout": "#fifa"},
+    {"value": "Engagements", "linkout": "#engagements"},
+    {"value": "Analytics","linkout": "#analytics"},
     {"value": "Project","linkout": "#anotherprojecttbd"},
     {"value": "Project","linkout": "#anotherprojecttbd"}
   ]
@@ -23,7 +23,6 @@ const NavBar = () => {
 
   return (
     <>
-    <div className="whitebox">
       <div className = "navbartop">
         <div className = "links-internal">
           <ul>
@@ -43,7 +42,7 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-    </div>
+      <div className="whitebox"></div>
     </>
   )
 };

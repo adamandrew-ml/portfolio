@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import Filters from './Filters'
-import CardStack from './CardStack';
-import '../styles/Fifa.css'
+import Filters from '../components/Filters'
+import CardStack from '../components/CardStack';
+import DataAnalysis from '../components/DataAnalysis';
 
 const Fifa = () => {
 
@@ -33,10 +33,11 @@ const Fifa = () => {
     res => res.json()).then(playerData => {setPlayerData(playerData)})}, [filterDataYear, filterDataClub, filterDataNaty]);
   
   return (
-    <div className="outer-container">
-      <div id="fifa">
+    <div id="analytics">
+      <div className="fifa-container">
         <Filters currentSelections={currentSelections} filterProps={filterProps} playerData={playerData}/>
         <CardStack playerData={playerData}/>
+        <DataAnalysis/>
       </div>
     </div>
   )

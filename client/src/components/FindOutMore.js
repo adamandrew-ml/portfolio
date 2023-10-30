@@ -3,7 +3,6 @@ import TechStack from './TechStack'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import '../styles/FindOutMore.css'
 // https://fontawesome.com/v5/docs/web/use-with/react
 
 
