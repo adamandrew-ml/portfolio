@@ -1,3 +1,4 @@
+import "../styles/NavBar.css"
 
 const NavBar = () => {
   const internalNavlinks = [
@@ -42,7 +43,6 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
-      <div className="whitebox"></div>
     </>
   )
 };

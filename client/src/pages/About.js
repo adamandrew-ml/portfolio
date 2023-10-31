@@ -1,6 +1,8 @@
+import "../styles/About.css"
 import FindOutMore from '../components/FindOutMore'
 import AboutText from '../components/AboutText'
 import AboutImage from '../components/AboutImage'
+
 
 const About = (bgc) => {
   return (

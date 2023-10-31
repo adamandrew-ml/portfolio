@@ -1,4 +1,4 @@
-import React from 'react'
+import "../styles/Engagements.css"
 
 const Engagements = () => {
   return (

@@ -37,11 +37,10 @@
   margin: 20px;
   min-width: 720px;
   justify-content: center;
-  border: var(--CHECKBORDERS);
 }
 
 .about-textbox p {
-  margin: 20px 0px;
+  margin: 10px 0px;
   padding: 0px;
   border: 0px;
   text-align: justify;
@@ -72,7 +71,7 @@
   justify-content: space-between;
   margin: auto;
   padding: 5px;
-  background-color: #f7f7f7;
+  background-color: #00000010;
   list-style-type: none;
   border-radius: 10px;
   transition: 0.4s ease-out;

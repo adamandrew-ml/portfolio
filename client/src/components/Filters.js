@@ -26,7 +26,6 @@ const Filters = ({currentSelections, playerData, filterProps}) => {
 
   return (
     <div className="filter-sidebar">
-      <p>Filters</p>
       <DropDownSingle selectLabel="Year" currentSelection={currentSelections.Year} optionsData={filterOptsYear} funcOnChange={filterProps.Year}/>
       <DropDownSingle selectLabel="Club" currentSelection={currentSelections.Club} optionsData={filterOptsClub} funcOnChange={filterProps.Club}/>
       <DropDownSingle selectLabel="Nationality" currentSelection={currentSelections.Naty} optionsData={filterOptsNaty} funcOnChange={filterProps.Naty}/>

@@ -1,46 +1,36 @@
-import { useState, useEffect } from 'react'
-import Filters from '../components/Filters'
-import CardStack from '../components/CardStack';
-import DataAnalysis from '../components/DataAnalysis';
+import "../styles/Analytics.css"
+import { useState } from 'react'
 
-const Fifa = () => {
-
-  const [filterDataYear, setfilterDataYear] = useState("Select all");
-  const getFilterArgYear = (filterDataYear) => {setfilterDataYear(filterDataYear);}
-
-  const [filterDataClub, setfilterDataClub] = useState("Select all");
-  const getFilterArgClub = (filterDataClub) => {setfilterDataClub(filterDataClub);}
-
-  const [filterDataNaty, setfilterDataNaty] = useState("Select all");
-  const getFilterArgNaty = (filterDataNaty) => {setfilterDataNaty(filterDataNaty);}
+import SoftIntroHandler from '../components/SoftIntroHandler'
 
 
-  const filterProps = {
-    "Year": getFilterArgYear,
-    "Club": getFilterArgClub,
-    "Naty": getFilterArgNaty
+import AnalyticsHandler from "../components/AnalyticsHandler";
+
+
+const Analytics = () => {
+
+  const [showFilters, setShowFilters] = useState(false);
+  const [showPlayers, setShowPlayers] = useState(false);
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [softIntroOpen, setSoftIntroOpen] = useState(true);
+
+  const packagedProps = {
+    "softIntroOpen"    : softIntroOpen,
+    "setSoftIntroOpen" : setSoftIntroOpen,
+    "showFilters"      : showFilters,
+    "setShowFilters"   : setShowFilters,
+    "showPlayers"      : showPlayers,
+    "setShowPlayers"   : setShowPlayers,
+    "showAnalysis"     : showAnalysis,
+    "setShowAnalysis"  : setShowAnalysis
   }
 
-  const currentSelections = {
-    "Year": filterDataYear,
-    "Club": filterDataClub,
-    "Naty": filterDataNaty,
-  }
-
-  const [playerData, setPlayerData] = useState([{}])
-  useEffect(() => {
-    fetch(`/query?year__eql=${filterDataYear}&club_name__eql=${filterDataClub}&nationality__eql=${filterDataNaty}`).then(
-    res => res.json()).then(playerData => {setPlayerData(playerData)})}, [filterDataYear, filterDataClub, filterDataNaty]);
-  
   return (
     <div id="analytics">
-      <div className="fifa-container">
-        <Filters currentSelections={currentSelections} filterProps={filterProps} playerData={playerData}/>
-        <CardStack playerData={playerData}/>
-        <DataAnalysis/>
-      </div>
+      <SoftIntroHandler {...packagedProps}/>
+      <AnalyticsHandler {...packagedProps}/>
     </div>
   )
 }
 
-export default Fifa
+export default Analytics
