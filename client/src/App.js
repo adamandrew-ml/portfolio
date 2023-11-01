@@ -1,9 +1,9 @@
-import React from 'react'
-
-import NavBar from './pages/NavBar'
+import NavBar from './structure/NavBar'
 import About from './pages/About'
 import Engagements from './pages/Engagements'
 import Analytics from './pages/Analytics'
+import "./styles/App.css"
+//https://www.pexels.com/
 
 
 const App = () => {

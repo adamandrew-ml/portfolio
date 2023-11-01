@@ -1,9 +1,7 @@
 import "../styles/Analytics.css"
 import { useState } from 'react'
 
-import SoftIntroHandler from '../components/SoftIntroHandler'
-
-
+import Overlay from '../components/Overlay'
 import AnalyticsHandler from "../components/AnalyticsHandler";
 
 
@@ -27,7 +25,7 @@ const Analytics = () => {
 
   return (
     <div id="analytics">
-      <SoftIntroHandler {...packagedProps}/>
+      <Overlay {...packagedProps}/>
       <AnalyticsHandler {...packagedProps}/>
     </div>
   )

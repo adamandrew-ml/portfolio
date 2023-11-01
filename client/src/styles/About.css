@@ -24,11 +24,12 @@
 }
 
 #about-img {
-	height: 270px;
+	height: 300px;
 	width: 100%;
 	object-fit: cover;
-	object-position: 0 20%;
+	object-position: 0 40%;
 	border-radius: 30px;
+  filter: grayscale(70%);
 }
 
 .about-textbox {

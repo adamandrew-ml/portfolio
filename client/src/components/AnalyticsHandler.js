@@ -46,7 +46,7 @@ const AnalyticsHandler = (props) => {
   useEffect(() => {
     props.softIntroOpen === true ?
     setOverallHeight("0px") :
-    setOverallHeight("630px")
+    setOverallHeight("600px")
   }, [props.softIntroOpen])
 
   const sectionStyleOn    = {width: "100%", opacity: 1, height: overallHeight, padding: "0px 5px"}

@@ -1,17 +1,24 @@
 import "../styles/About.css"
-import FindOutMore from '../components/FindOutMore'
-import AboutText from '../components/AboutText'
-import AboutImage from '../components/AboutImage'
+import AboutTech from '../components/AboutTech'
+import RenderText from '../components/RenderText'
+import RenderImageLocal from '../components/RenderImageLocal'
+import aboutText from '../data/about_text.json'
+
 
 
 const About = (bgc) => {
+
   return (
-    <div id="about" style={{backgroundColor: bgc.bgc}}>
+    <div id="about">
       <div className="about-container">
-        <AboutImage />
-        <AboutText />
+        <RenderImageLocal
+          imageID="about-img"
+          imagePath="/images/aa_img2.jpeg"
+          imageClass="about-image"/>
+        <RenderText
+          textArray={aboutText} textClass="about-textbox"/>
       </div>
-      <FindOutMore />
+      <AboutTech />
     </div>
   )
 }
