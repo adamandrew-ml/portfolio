@@ -1,9 +1,7 @@
-
-import { useState, useEffect } from 'react'
-
-// import Filters from '../components/Filters'
-// import CardStack from '../components/CardStack';
-// import DataAnalysis from '../components/DataAnalysis';
+import FlexSection from '../components/FlexSection';
+import Filters from '../components/Filters'
+import CardStack from '../components/CardStack';
+import DataAnalysis from '../components/DataAnalysis';
 
 
 const AnalyticsHandler = (props) => {
@@ -41,48 +39,11 @@ const AnalyticsHandler = (props) => {
 
 
 
-
-  const [overallHeight, setOverallHeight] = useState()
-  useEffect(() => {
-    props.softIntroOpen === true ?
-    setOverallHeight("0px") :
-    setOverallHeight("600px")
-  }, [props.softIntroOpen])
-
-  const sectionStyleOn    = {width: "100%", opacity: 1, height: overallHeight, padding: "0px 5px"}
-  const sectionStyleOff   = {width: "0px", opacity: 0, height: overallHeight, padding: "0px"}
-  const sectionStyleTrans = {transitionDuration: "0.2s", transitionDelay: "0.2s", padding: "2px 5px"}
-
-  const applyStyle = (styleType, showVar) => {
-    let returnStyle;
-    if (styleType === "inner") {
-      returnStyle = !props.softIntroOpen && showVar ?
-        {...sectionStyleOn, ...sectionStyleTrans} : {...sectionStyleOff};
-    } else {
-      returnStyle = showVar ?
-        {...sectionStyleOn} : {width: sectionStyleOff.width}
-    }
-    return returnStyle;
-  }
-
-
-
   return (
-
     <div className="analytics-container">
-
-      <div className="analytics-section" id="left" style={applyStyle("outer", props.showFilters)}>
-        <div style={applyStyle("inner", props.showFilters)}>Something</div>
-      </div>
-
-      <div className="analytics-section" id="middle" style={applyStyle("outer", props.showPlayers)}>
-        <div style={applyStyle("inner", props.showPlayers)}>Something</div>
-      </div>
-
-      <div className="analytics-section" id="right" style={applyStyle("outer", props.showAnalysis)}>
-        <div style={applyStyle("inner", props.showAnalysis)}>Something</div>
-      </div>
-
+      <FlexSection {...props} itemID="left"   showDecider ={props.showFilters}/>
+      <FlexSection {...props} itemID="middle" showDecider ={props.showPlayers}/>
+      <FlexSection {...props} itemID="right"  showDecider ={props.showAnalysis}/>
     </div>
 
   )

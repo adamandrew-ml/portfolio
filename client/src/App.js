@@ -2,7 +2,9 @@ import NavBar from './structure/NavBar'
 import About from './pages/About'
 import Engagements from './pages/Engagements'
 import Analytics from './pages/Analytics'
-import "./styles/App.css"
+
+import "./styles/Defaults.css"
+
 //https://www.pexels.com/
 
 

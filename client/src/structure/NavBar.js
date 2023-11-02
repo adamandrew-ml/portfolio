@@ -1,4 +1,3 @@
-import "../styles/NavBar.css"
 import internalNavlinks from '../data/internal_links.json'
 import externalNavlinks from '../data/external_links.json'
 

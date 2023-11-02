@@ -1,4 +1,3 @@
-import "../styles/Engagements.css"
 
 const Engagements = () => {
   return (
