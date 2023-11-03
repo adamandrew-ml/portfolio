@@ -15,12 +15,13 @@ const About = () => {
 
   const classProps = {
     "imageClass": "about-image",
-    "textClass" : "about-textbox"
+    "textClass" : "about-textbox",
+    "pageClass" : "about-container"
   }
 
   return (
     <div id="about">
-      <div className="about-container">
+      <div className={classProps.pageClass}>
         <RenderImageLocal {...dataProps} {...classProps}/>
         <RenderText {...dataProps} {...classProps}/>
       </div>

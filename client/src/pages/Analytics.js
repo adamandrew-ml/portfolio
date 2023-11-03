@@ -66,7 +66,7 @@ const Analytics = () => {
   return (
     <div id="analytics">
       <Overlay {...packagedProps} {...classProps} {...dataProps}/>
-      <AnalyticsHandler {...packagedProps}/>
+      <AnalyticsHandler {...packagedProps} {...classProps}/>
     </div>
   )
 }
