@@ -2,6 +2,7 @@ import NavBar from './structure/NavBar'
 import About from './pages/About'
 import Engagements from './pages/Engagements'
 import Analytics from './pages/Analytics'
+import Testing from './pages/Testing'
 
 import "./styles/Defaults.css"
 
@@ -13,11 +14,11 @@ const App = () => {
   return (
     <>
     <NavBar />
-    <div className="outer-container">
+    <div id="outer-container">
       <About/>
       <Engagements />
       <Analytics />
-      <About/>
+      <Testing/>
     </div>
     </>
   )

@@ -1,7 +1,7 @@
 
 const Engagements = () => {
   return (
-    <div id="engagements">
+    <div id="engagements" class="page">
       Engagements
     </div>
   )

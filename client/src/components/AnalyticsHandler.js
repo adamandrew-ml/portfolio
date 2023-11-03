@@ -40,7 +40,7 @@ const AnalyticsHandler = (props) => {
 
 
   return (
-    <div className="analytics-container">
+    <div className="page-content">
       <FlexSection {...props} itemID="left"   showDecider ={props.showFilters}/>
       <FlexSection {...props} itemID="middle" showDecider ={props.showPlayers}/>
       <FlexSection {...props} itemID="right"  showDecider ={props.showAnalysis}/>

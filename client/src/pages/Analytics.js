@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
-
 import Overlay from '../components/Overlay'
 import AnalyticsHandler from "../components/AnalyticsHandler";
-
 
 const Analytics = () => {
 
@@ -64,7 +62,7 @@ const Analytics = () => {
   
 
   return (
-    <div id="analytics">
+    <div id="analytics" class="page">
       <Overlay {...packagedProps} {...classProps} {...dataProps}/>
       <AnalyticsHandler {...packagedProps} {...classProps}/>
     </div>

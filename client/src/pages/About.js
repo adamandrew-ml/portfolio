@@ -1,8 +1,8 @@
-import AboutTech from '../components/AboutTech'
+import Expandable from '../components/Expandable'
 import RenderText from '../components/RenderText'
 import RenderImageLocal from '../components/RenderImageLocal'
 import aboutText from '../data/about_text.json'
-
+import AboutTechCont from '../components/AboutTechCont'
 
 
 const About = () => {
@@ -15,17 +15,16 @@ const About = () => {
 
   const classProps = {
     "imageClass": "about-image",
-    "textClass" : "about-textbox",
     "pageClass" : "about-container"
   }
 
   return (
-    <div id="about">
-      <div className={classProps.pageClass}>
-        <RenderImageLocal {...dataProps} {...classProps}/>
-        <RenderText {...dataProps} {...classProps}/>
+    <div id="about" class="page" style={{paddingTop: "120px"}}>
+      <div className="page-content">
+        <RenderImageLocal id = "about-img" {...dataProps} {...classProps}/>
+        <RenderText {...dataProps}/>
       </div>
-      <AboutTech />
+      <Expandable style={{width: "80%"}}{...dataProps} {...classProps} boxContent={<AboutTechCont/>}/>
     </div>
   )
 }
