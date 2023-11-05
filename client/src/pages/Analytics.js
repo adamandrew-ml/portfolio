@@ -1,70 +1,34 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Overlay from '../components/Overlay'
 import AnalyticsHandler from "../components/AnalyticsHandler";
+import analyticsText from '../data/analytics_text.json'
 
 const Analytics = () => {
+
+  const [overlayOpen,   setOverlayOpen]   = useState(true);
 
   const [showFilters,   setShowFilters]   = useState(false);
   const [showPlayers,   setShowPlayers]   = useState(false);
   const [showAnalysis,  setShowAnalysis]  = useState(false);
-  const [overlayOpen,   setOverlayOpen]   = useState(true);
-  const [overallHeight, setOverallHeight] = useState()
-  const [overlayStyle,  setOverlayStyle]  = useState("");
 
-  const overlayStyleOpen    = {height: "630px", backgroundColor: "#ffffff95"}
-  const overlayStyleClosed  = {height: "25px", backgroundColor: "#00000095"}
-  const sectionStyleOn      = {width: "100%", opacity: 1, height: overallHeight, padding: "0px 5px"}
-  const sectionStyleOff     = {width: "0px", opacity: 0, height: overallHeight, padding: "0px"}
-  const sectionStyleTrans   = {transitionDuration: "0.2s", transitionDelay: "0.2s", padding: "2px 5px"}
-
-  useEffect(() => {setOverlayStyle(overlayOpen ? overlayStyleOpen: overlayStyleClosed)}, [overlayOpen])
-  useEffect(() => {overlayOpen === true ? setOverallHeight("0px") : setOverallHeight("600px")}, [overlayOpen])
-
-  const applyStyle = (styleType, showVar) => {
-    if (styleType === "inner") {
-      return !overlayOpen && showVar ? {...sectionStyleOn, ...sectionStyleTrans} : {...sectionStyleOff};
-    } else {
-      return showVar ? {...sectionStyleOn} : {width: sectionStyleOff.width}
-    }
-  }
+  const overlayNavData = [
+    {"text": "Filters",  "stateVar": showFilters,  "setFunc": setShowFilters,  "sectionStyle": {backgroundColor: "red", maxWidth: "200px"}},
+    {"text": "Players",  "stateVar": showPlayers,  "setFunc": setShowPlayers,  "sectionStyle": {backgroundColor: "blue"}},
+    {"text": "Analysis", "stateVar": showAnalysis, "setFunc": setShowAnalysis, "sectionStyle": {backgroundColor: "green"}}
+  ]
 
   const packagedProps = {
     "overlayOpen"          : overlayOpen,
     "setOverlayOpen"       : setOverlayOpen,
-    "showFilters"          : showFilters,
-    "setShowFilters"       : setShowFilters,
-    "showPlayers"          : showPlayers,
-    "setShowPlayers"       : setShowPlayers,
-    "showAnalysis"         : showAnalysis,
-    "setShowAnalysis"      : setShowAnalysis,
-    "overlayStyle"         : overlayStyle,
-    "setOverlayStyle"      : setOverlayStyle,
-    "overallHeight"        : overallHeight,
-    "setOverallHeight"     : setOverallHeight,
-    "overlayStyleOpen"     : overlayStyleOpen,
-    "overlayStyleClosed"   : overlayStyleClosed,
-    "sectionStyleOn"       : sectionStyleOn,
-    "sectionStyleOff"      : sectionStyleOff,
-    "sectionStyleTrans"    : sectionStyleTrans,
-    "applyStyle"           : applyStyle
-  }
-
-  const dataProps = {
-    "overlayBackground" : "https://images.pexels.com/photos/1171084/pexels-photo-1171084.jpeg",
-  }
-
-  const classProps = {
-    "classNav"            : "analytics-navbar",
-    "classOverlayContent" : "analytics-content-filters",
-    "classOverlayImage"   : "analytics-navbar-image",
-    "classFlexSection"    : "analytics-section"
-  }
-  
+    "overlayNavData"       : overlayNavData,
+    "overlayBackground"    : "https://images.pexels.com/photos/1171084/pexels-photo-1171084.jpeg",
+    "overlayText"          : analyticsText
+  }  
 
   return (
     <div id="analytics" class="page">
-      <Overlay {...packagedProps} {...classProps} {...dataProps}/>
-      <AnalyticsHandler {...packagedProps} {...classProps}/>
+      <Overlay {...packagedProps}/>
+      <AnalyticsHandler {...packagedProps}/>
     </div>
   )
 }

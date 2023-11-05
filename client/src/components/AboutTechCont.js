@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react' 
 import techIcons from "../data/image_locations.json"
+import '../styles/AboutTechCont.css'
 
 const AboutTechCont = () => {
 

@@ -1,0 +1,5 @@
+[
+  {"text" : "This is a textbox", "fontSize": "18px"},
+  {"text" : "Text to be rendered can be provided as a json file via React props", "fontSize": "18px"},
+  {"text" : "If you are seeing this, I forgot to update the text.", "fontSize": "18px"}
+]

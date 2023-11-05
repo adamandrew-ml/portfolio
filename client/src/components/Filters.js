@@ -13,9 +13,6 @@ const Filters = ({currentSelections, playerData, filterProps}) => {
 
   const selectionDefault = [{value: "Select all", label: "Select all"}];
 
-  const [filterOptsYear, setYearData] = useState(selectionDefault);
-  useEffect(() => {setYearData(getAttribute(playerData, "year"))}, [playerData]);
-
   const [filterOptsClub, setClubData] = useState(selectionDefault);
   useEffect(() => {setClubData(getAttribute(playerData, "club_name"))}, [playerData]);
 
@@ -26,7 +23,6 @@ const Filters = ({currentSelections, playerData, filterProps}) => {
 
   return (
     <div className="filter-sidebar">
-      <DropDownSingle selectLabel="Year" currentSelection={currentSelections.Year} optionsData={filterOptsYear} funcOnChange={filterProps.Year}/>
       <DropDownSingle selectLabel="Club" currentSelection={currentSelections.Club} optionsData={filterOptsClub} funcOnChange={filterProps.Club}/>
       <DropDownSingle selectLabel="Nationality" currentSelection={currentSelections.Naty} optionsData={filterOptsNaty} funcOnChange={filterProps.Naty}/>
     </div>

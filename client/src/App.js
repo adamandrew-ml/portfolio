@@ -4,11 +4,6 @@ import Engagements from './pages/Engagements'
 import Analytics from './pages/Analytics'
 import Testing from './pages/Testing'
 
-import "./styles/Defaults.css"
-
-//https://www.pexels.com/
-
-
 const App = () => {
   
   return (
