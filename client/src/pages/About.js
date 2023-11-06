@@ -2,7 +2,7 @@ import Expandable from '../components/bank/Expandable'
 import RenderText from '../components/bank/RenderText'
 import RenderImageLocal from '../components/bank/RenderImageLocal'
 import aboutText from '../data/about_text.json'
-import AboutTechCont from '../components/app/AboutTechCont'
+import AboutTechCont from '../components/specific/AboutTechCont'
 
 
 const About = () => {

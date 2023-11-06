@@ -1,13 +1,15 @@
 import React from 'react'
 
-const DropDownSingle = ({currentSelection, selectLabel, optionsData, funcOnChange}) => {
-  const handleOnChange = (selectedOpt) => {funcOnChange(selectedOpt.target.value);};
+const DropDownSingle = (props) => {
+
+  const handleOnChange = (selectedOpt) => {props.funcOnChange(selectedOpt.target.value);};
+
   return (
     <div className="dropdown-single">
-      <p>{selectLabel}</p>
-      <select onChange={handleOnChange} value={currentSelection}>
+      <p>{props.selectLabel}</p>
+      <select onChange={handleOnChange} value={props.currentSelection}>
         <option key={-1} value="select-all">Select all</option>
-        {optionsData.map((item, i) => (<option key={i} value={item.value}>{item.label}</option>))}
+        {props.optionsData.map((item, i) => (<option key={i} value={item.value}>{item.label}</option>))}
       </select>
     </div>
   )

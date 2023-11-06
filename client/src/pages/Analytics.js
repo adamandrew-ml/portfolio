@@ -1,20 +1,19 @@
 import { useState } from 'react'
 import Overlay from '../components/bank/Overlay'
-import AnalyticsHandler from "../components/app/AnalyticsHandler";
+import AnalyticsHandler from '../components/specific/AnalyticsHandler'
 import analyticsText from '../data/analytics_text.json'
 
 const Analytics = () => {
 
   const [overlayOpen,   setOverlayOpen]   = useState(true);
-
   const [showFilters,   setShowFilters]   = useState(false);
   const [showPlayers,   setShowPlayers]   = useState(false);
   const [showAnalysis,  setShowAnalysis]  = useState(false);
 
   const overlayNavData = [
-    {"text": "Filters",  "stateVar": showFilters,  "setFunc": setShowFilters,  "sectionStyle": {backgroundColor: "red", maxWidth: "200px"}},
-    {"text": "Players",  "stateVar": showPlayers,  "setFunc": setShowPlayers,  "sectionStyle": {backgroundColor: "blue"}},
-    {"text": "Analysis", "stateVar": showAnalysis, "setFunc": setShowAnalysis, "sectionStyle": {backgroundColor: "green"}}
+    {"text": "Filters",  "stateVar": showFilters,  "setFunc": setShowFilters,  "sectionStyle": {backgroundColor: "#00000010", maxWidth: "200px", transitionDuration: "0.1s"}},
+    {"text": "Players",  "stateVar": showPlayers,  "setFunc": setShowPlayers,  "sectionStyle": {backgroundColor: "#00000010"}},
+    {"text": "Analysis", "stateVar": showAnalysis, "setFunc": setShowAnalysis, "sectionStyle": {backgroundColor: "#00000010"}}
   ]
 
   const packagedProps = {

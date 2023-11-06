@@ -2,7 +2,17 @@
 :root {
 	--grey: #716969;
 	--black: #011627;
+	--black-10: #01162710;
+	--black-20: #01162720;
+	--black-50: #01162750;
+	--black-80: #01162780;
+	--black-90: #01162790;
 	--white: #FDFFFC;
+  --white-10: #FDFFFC10;
+  --white-20: #FDFFFC20;
+  --white-50: #FDFFFC50;
+  --white-80: #FDFFFC80;
+  --white-90: #FDFFFC90;
   --green: #44A1A0;
   --blue: #1B98E0;
   --outercontpadding: 0px;
@@ -90,7 +100,7 @@ img {
   width: 100%;
   max-width: 100%;
   transition: 0.5s ease-in-out;
-  margin: 0px;
+  margin: 0px 5px 0px 0px;
   overflow: hidden;
 }
 
@@ -182,62 +192,69 @@ img {
 	object-fit: cover;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .dropdown-single {
-  width: 95%;
   padding: 5px;
-  margin-bottom: 5px;
-  background-color: #ddd;
+  border: none;
 }
 
 .dropdown-single select {
   width: 100%;
+  border: none;
 }
 
 .dropdown-single p {
   padding: 0px;
   margin: 1px;
 }
+
+.table-minimal {
+  width: 100%;
+}
+
+.table-minimal tr, td, th {
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

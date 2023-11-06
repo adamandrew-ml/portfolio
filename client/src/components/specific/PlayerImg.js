@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PlayerImg = ({player}) => {
+const PlayerImg = (props) => {
 
   const pad = (num, size) => {
     num = num.toString();
@@ -8,15 +8,14 @@ const PlayerImg = ({player}) => {
     return num;
   };
 
-  const padded = pad(player.sofifa_id, 6);
+  const padded = pad(props.player.sofifa_id, 6);
   const first = String(padded).substring(0,3);
-  const yearPart = String(player.year).substring(2,4);
+  const yearPart = String(props.player.year).substring(2,4);
   const img_url1 = String("https://cdn.sofifa.net/players/" + first + "/" + String(padded).substring(3,6) + "/" + yearPart + "_120.png");
 
+
   return (
-    <div className="player-image">
-      <img alt="Nothing here" src={img_url1} data-root="https://cdn.sofifa.net/" />
-    </div>
+    <img className="player-image" alt="Nothing here" src={img_url1} data-root="https://cdn.sofifa.net/"/>
   )
 
 }

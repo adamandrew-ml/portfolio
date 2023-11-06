@@ -1,7 +1,6 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import PlayerCard from './PlayerCard';
 import '../../styles/CardStack.css'
-
 
 const CardStack = (props) => {
 
@@ -9,7 +8,7 @@ const CardStack = (props) => {
     return (<p>Loading...</p>)
   } else {
     return (
-      <div className="scroll-container" style={{marginBottom: "50px"}}>
+      <div className="scroll-container" style={{marginBottom: "50px", justifyContent: "space-evenly", alignContent: "flex-start", transition: "1s"}}>
         {props.playerData.slice(0,100).map((player, i) => <PlayerCard key={i} player={player}/>)}
       </div>
     )
