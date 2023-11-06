@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import Overlay from '../components/Overlay'
+import Overlay from '../components/bank/Overlay'
 
 const Testing = () => {
 

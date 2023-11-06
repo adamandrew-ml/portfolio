@@ -1,7 +1,7 @@
-import FlexSection from '../components/FlexSection';
-import Filters from '../components/Filters'
-import CardStack from '../components/CardStack';
-import DataAnalysis from '../components/DataAnalysis';
+import FlexSection from '../bank/FlexSection';
+import Filters from './Filters'
+import CardStack from './CardStack';
+import DataAnalysis from './DataAnalysis';
 import { useState, useEffect } from 'react'
 
 const AnalyticsHandler = (props) => {

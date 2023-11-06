@@ -2,7 +2,6 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import AboutTechCont from './AboutTechCont'
 
 import { useState, useEffect } from 'react' 
 // https://fontawesome.com/v5/docs/web/use-with/react

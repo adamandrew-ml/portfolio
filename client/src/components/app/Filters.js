@@ -1,4 +1,4 @@
-import DropDownSingle from './DropDownSingle'
+import DropDownSingle from '../bank/DropDownSingle'
 import { useState, useEffect } from 'react'
 
 const Filters = ({currentSelections, playerData, filterProps}) => {

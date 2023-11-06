@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Overlay from '../components/Overlay'
-import AnalyticsHandler from "../components/AnalyticsHandler";
+import Overlay from '../components/bank/Overlay'
+import AnalyticsHandler from "../components/app/AnalyticsHandler";
 import analyticsText from '../data/analytics_text.json'
 
 const Analytics = () => {

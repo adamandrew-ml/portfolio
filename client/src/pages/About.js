@@ -1,8 +1,8 @@
-import Expandable from '../components/Expandable'
-import RenderText from '../components/RenderText'
-import RenderImageLocal from '../components/RenderImageLocal'
+import Expandable from '../components/bank/Expandable'
+import RenderText from '../components/bank/RenderText'
+import RenderImageLocal from '../components/bank/RenderImageLocal'
 import aboutText from '../data/about_text.json'
-import AboutTechCont from '../components/AboutTechCont'
+import AboutTechCont from '../components/app/AboutTechCont'
 
 
 const About = () => {
