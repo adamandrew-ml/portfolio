@@ -10,7 +10,7 @@ const Overlay = (props) => {
 
   
   const [overlayStyle,  setOverlayStyle]  = useState("");
-  const overlayStyleOpen    = {height: "630px", backgroundColor: "#ffffff95"}
+  const overlayStyleOpen    = {height: "640px", backgroundColor: "#ffffff95"}
   const overlayStyleClosed  = {height: "25px", backgroundColor: "#00000095"}
 
   useEffect(() => {setOverlayStyle(props.overlayOpen ? overlayStyleOpen: overlayStyleClosed)}, [props.overlayOpen])

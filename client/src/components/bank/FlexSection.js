@@ -5,7 +5,7 @@ const FlexSection = (props) => {
   const toRender = props.renders;
 
   const [overallHeight, setOverallHeight] = useState();
-  useEffect(() => {props.overlayOpen === true ? setOverallHeight("0px") : setOverallHeight("600px")}, [props.overlayOpen])
+  useEffect(() => {props.overlayOpen === true ? setOverallHeight("0px") : setOverallHeight("640px")}, [props.overlayOpen])
 
   const sectionStyleOn      = {width: "100%", opacity: 1, height: overallHeight}
   const sectionStyleOff     = {width: "0px", opacity: 0, height: overallHeight}

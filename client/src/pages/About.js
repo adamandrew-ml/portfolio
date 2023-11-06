@@ -19,7 +19,7 @@ const About = () => {
   }
 
   return (
-    <div id="about" class="page" style={{paddingTop: "120px"}}>
+    <div id="about" class="page" style={{paddingTop: "120px", width: "80%"}}>
       <div className="page-content">
         <RenderImageLocal id = "about-img" {...dataProps} {...classProps}/>
         <RenderText {...dataProps}/>

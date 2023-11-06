@@ -30,7 +30,7 @@ const Filters = (props) => {
   const [filterOptsLeague, setLeagueData] = useState(selectionDefault);
   useEffect(() => {setLeagueData(getAttribute(props.playerData, "league_name"))}, [props.playerData]);
 
-  // LEAGUE
+  // NATIONALITY
   const [currSelNationality, setCurrSelNationality] = useState("Select all");
   const getFilterArgNationality = (currSelNationality) => {setCurrSelNationality(currSelNationality);}
   const [filterOptsNationality, setNationalityData] = useState(selectionDefault);
@@ -38,7 +38,7 @@ const Filters = (props) => {
 
 
 
-  const queryMapping = [
+  const querySelectMapping = [
     {"selectLabel"       : "Club",
     "databaseField"      : "club_name__eql",
       "currentSelection" : currSelClub,
@@ -60,25 +60,25 @@ const Filters = (props) => {
 
 
 
+  // const queryValueMapping = [
+  // ]
+
+
+
+
   useEffect(() => {
     const queryBase = `/query?year__eql=2021`
-      // `/query?year__eql=2021&club_name__eql=${filterDataClub}&nationality__eql=${filterDataNaty}`
-    const constructor = queryMapping.map(item => ("&" + String(item.databaseField) + "=" + String(item.currentSelection)));
+    const constructor = querySelectMapping.map(item => ("&" + String(item.databaseField) + "=" + String(item.currentSelection)));
     const rawString = queryBase + constructor.join("")
     props.setQueryString(rawString);
-  }, [queryMapping]);
+  }, [querySelectMapping]);
 
 
 
   return (
-    <div className="filter-sidebar">
-      {queryMapping.map((item, i) => (
-        <DropDownSingle
-          currentSelection  = {item.currentSelection}
-          selectLabel       = {item.selectLabel}
-          optionsData       = {item.optionsData}
-          funcOnChange      = {item.funcOnChange}
-        />
+    <div>
+      {querySelectMapping.map((item, i) => (
+        <DropDownSingle {...item}/>
       ))}
 
     </div>

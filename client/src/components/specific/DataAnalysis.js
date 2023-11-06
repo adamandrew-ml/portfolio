@@ -2,7 +2,9 @@ import React from 'react'
 
 const DataAnalysis = () => {
   return (
-    <div>DataAnalysis</div>
+    <div className="dropdown-single">
+      DataAnalysis
+    </div>
   )
 }
 

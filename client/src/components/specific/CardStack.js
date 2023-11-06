@@ -8,7 +8,7 @@ const CardStack = (props) => {
     return (<p>Loading...</p>)
   } else {
     return (
-      <div className="scroll-container" style={{marginBottom: "50px", justifyContent: "space-evenly", alignContent: "flex-start", transition: "1s"}}>
+      <div className="scroll-container" style={{marginBottom: "50px", justifyContent: "space-evenly", alignContent: "flex-start"}}>
         {props.playerData.slice(0,100).map((player, i) => <PlayerCard key={i} player={player}/>)}
       </div>
     )
