@@ -1,14 +1,12 @@
-import DropDownSingle from '../bank/DropDownSingle'
+
 import { useState, useEffect } from 'react'
+// import useDebounce from '../../hooks/useDebounce'
+import DynamicSelector from './DynamicSelector'
 
 const Filters = (props) => {
 
-  
-
-
-
-
   const selectionDefault = [{value: "Select all", label: "Select all"}];
+  const selectionDefaultNum = [{value: 0, label: 0}];
   const getAttribute = (items, attribute) => {
     const all_attributes = items.map(item => item[attribute]);
     const getUnique = (value, index, array) => {return array.indexOf(value) === index};
@@ -36,32 +34,49 @@ const Filters = (props) => {
   const [filterOptsNationality, setNationalityData] = useState(selectionDefault);
   useEffect(() => {setNationalityData(getAttribute(props.playerData, "nationality"))}, [props.playerData]);
 
+  // MIN OVERALL
+  const [currSelMinOverall, setCurrSelMinOverall] = useState(0);
+  const getFilterArgMinOverall = (currSelMinOverall) => {setCurrSelMinOverall(currSelMinOverall);}
+  const [filterOptsMinOverall, setMinOverallData] = useState(selectionDefaultNum);
+  useEffect(() => {setMinOverallData(getAttribute(props.playerData, "overall"))}, [props.playerData]);
+
+
+
+
+
+
+
 
 
   const querySelectMapping = [
     {"selectLabel"       : "Club",
-    "databaseField"      : "club_name__eql",
+      "databaseField"    : "club_name__eql",
       "currentSelection" : currSelClub,
       "optionsData"      : filterOptsClub,
-      "funcOnChange"     : getFilterArgClub},
+      "funcOnChange"     : getFilterArgClub,
+      "renderType"       : "dropdownSingle"},
 
     {"selectLabel"       : "League",
-    "databaseField"      : "league_name__eql",
+      "databaseField"    : "league_name__eql",
       "currentSelection" : currSelLeague,
       "optionsData"      : filterOptsLeague,
-      "funcOnChange"     : getFilterArgLeague},
+      "funcOnChange"     : getFilterArgLeague,
+      "renderType"       : "dropdownSingle"},
 
     {"selectLabel"       : "Nationality",
     "databaseField"      : "nationality__eql",
       "currentSelection" : currSelNationality,
       "optionsData"      : filterOptsNationality,
-      "funcOnChange"     : getFilterArgNationality}
+      "funcOnChange"     : getFilterArgNationality,
+      "renderType"       : "dropdownSingle"},
+
+    {"selectLabel"       : "MinOverall",
+      "databaseField"    : "overall__lst",
+      "currentSelection" : currSelMinOverall,
+      "optionsData"      : filterOptsMinOverall,
+      "funcOnChange"     : getFilterArgMinOverall,
+      "renderType"       : "rangeSelector"}
   ]
-
-
-
-  // const queryValueMapping = [
-  // ]
 
 
 
@@ -74,13 +89,9 @@ const Filters = (props) => {
   }, [querySelectMapping]);
 
 
-
   return (
     <div>
-      {querySelectMapping.map((item, i) => (
-        <DropDownSingle {...item}/>
-      ))}
-
+      <DynamicSelector {...props} querySelectMapping={querySelectMapping}/>
     </div>
   )
 }

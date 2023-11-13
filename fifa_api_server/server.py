@@ -59,17 +59,14 @@ class Query:
 def query():
     args_dict_raw = request.args.to_dict()
     args_dict_use = {}
-    # print("\n")
     for k, v in args_dict_raw.items():
         prepped_v = str(v).lower().replace("-", "").strip()
-        print(k, prepped_v)
         if prepped_v not in ["", "select all", "selectall"]:
             args_dict_use[k] = v
     query_class = Query("fifa.db")
     myquery = query_class.set_arguments(args_dict_use).set_query()
     returnable = myquery.execute_query().get_results()
-    print(len(returnable))
-    # print("\n")
+    print("\n", returnable, "\n")
     return jsonify(returnable)
 
 

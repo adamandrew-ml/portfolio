@@ -11,7 +11,7 @@ const Analytics = () => {
   const [showAnalysis,  setShowAnalysis]  = useState(false);
 
   const overlayNavData = [
-    {"text": "Filters",  "stateVar": showFilters,  "setFunc": setShowFilters,  "sectionStyle": {backgroundColor: "#1B98E050", maxWidth: "160px", transitionDuration: "0.3s"}},
+    {"text": "Filters",  "stateVar": showFilters,  "setFunc": setShowFilters,  "sectionStyle": {backgroundColor: "#1B98E050", maxWidth: "200px", transitionDuration: "0.3s"}},
     {"text": "Players",  "stateVar": showPlayers,  "setFunc": setShowPlayers,  "sectionStyle": {backgroundColor: "#00000020"}},
     {"text": "Analysis", "stateVar": showAnalysis, "setFunc": setShowAnalysis, "sectionStyle": {backgroundColor: "#44A1A050"}}
   ]
