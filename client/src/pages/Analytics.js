@@ -22,7 +22,7 @@ const Analytics = (props) => {
     "overlayNavData"       : overlayNavData,
     "overlayBackground"    : "https://images.pexels.com/photos/1171084/pexels-photo-1171084.jpeg",
     "overlayText"          : analyticsText
-  }  
+  }
 
   return (
     <div id={props.id} class="page">

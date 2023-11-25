@@ -1,8 +1,7 @@
-import Expandable from '../components/bank/Expandable'
 import RenderText from '../components/bank/RenderText'
 import RenderImageLocal from '../components/bank/RenderImageLocal'
 import aboutText from '../data/about_text.json'
-import AboutTechCont from '../components/specific/AboutTechCont'
+import AboutTech from '../components/specific/AboutTech'
 
 
 const About = (props) => {
@@ -13,18 +12,15 @@ const About = (props) => {
     "imagePath" : "/images/aa_img2.jpeg"
   }
 
-  const classProps = {
-    "imageClass": "about-image",
-    "pageClass" : "about-container"
-  }
-
   return (
-    <div id={props.id} class="page" style={{paddingTop: "120px", width: "80%"}}>
-      <div className="page-content">
-        <RenderImageLocal id = "about-img" {...dataProps} {...classProps}/>
-        <RenderText {...dataProps}/>
+    <div id={props.id} class="page flex-center-all">
+      <div className="width-80pc">
+        <div className="flex-sp-bet">
+          <RenderImageLocal id = "about-img" className="img-cover width-30pc height-300 float-left" {...dataProps}/>
+          <RenderText className="width-60pc float-right" {...dataProps}/>
+        </div>
+        <AboutTech/>
       </div>
-      <Expandable style={{width: "80%"}}{...dataProps} {...classProps} boxContent={<AboutTechCont/>}/>
     </div>
   )
 }

@@ -17,7 +17,7 @@ const Overlay = (props) => {
   return (
     <div className="expandable-overlay" style={{...overlayStyle}}>
       <div className="flex-sp-bet" style={{padding: "2px"}}>
-        <ul className="list-horizontal height20" style={props.overlayOpen ? {opacity: 0, width: "40%"} : {opacity: 1, width: "40%"}}>
+        <ul className="list-horizontal height-20" style={props.overlayOpen ? {opacity: 0, width: "40%"} : {opacity: 1, width: "40%"}}>
           {!props.overlayNavData ? <></> : props.overlayNavData.map((item, i) => <li className="link"onClick={() => {item.setFunc(!item.stateVar)}}>{item.text}</li>)}
         </ul>
         <div className="flex-center-all link"

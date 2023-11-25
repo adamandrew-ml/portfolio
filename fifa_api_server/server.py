@@ -25,7 +25,7 @@ class Query:
 
         self.sql_query_open = "select * from players where 1=1 "
         self.query_main = ""
-        self.sql_query_close = " order by overall desc limit 10000;"
+        self.sql_query_close = " order by overall desc limit 100;"
 
     def convert_to_sql(self, field_name, operator, value):
         value = str(value).lower()

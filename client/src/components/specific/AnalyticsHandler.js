@@ -20,7 +20,7 @@ const AnalyticsHandler = (props) => {
   }
 
   return (
-    <div className="page-content">
+    <div className="flex-sp-bet">
       {!props.overlayNavData ? <></> : props.overlayNavData.map((item, i) =>
         <FlexSection
           {...item}
