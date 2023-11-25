@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react' 
 import techIcons from "../../data/image_locations.json"
-import '../../styles/AboutTechCont.css'
 
 const AboutTechCont = () => {
 
@@ -8,7 +7,6 @@ const AboutTechCont = () => {
   const [techSpecifics,   setTechSpecifics]    = useState([])
   const [techSelected,    setTechSelected]     = useState("")
   const [techDescription, settechDescription]  = useState("")
-  // const [techStackStyle,  setTechStackStyle]   = useState({height: "0px", opacity: 0})
 
   const styleDefaults = {width: "29%",  opacity: 0, visibility: "hidden",  transitionDelay: "0s",   transitionDuration: "0.1s"}
   const styleUpdated  = {width: "100%", opacity: 1, visibility: "visible", transitionDelay: "0.3s", transitionDuration: "0.5s"}
@@ -23,7 +21,6 @@ const AboutTechCont = () => {
     settechDescription(techIcons.filter(d => d.group === item)[0].capability);
     setTechSelected(item);
   }
-
 
   return (
     <ul className="tech-stack-container" style={{width: techDetailsStyle.width}}>

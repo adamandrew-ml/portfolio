@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import PlayerCard from './PlayerCard';
-import '../../styles/CardStack.css'
 
 const CardStack = (props) => {
 

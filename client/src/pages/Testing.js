@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import Overlay from '../components/bank/Overlay'
 
-const Testing = () => {
+const Testing = (props) => {
 
   const [overlayOpen,   setOverlayOpen]   = useState(true);
   const packagedProps = {
@@ -14,7 +14,7 @@ const Testing = () => {
 
 
   return (
-    <div id="testing"class="page">
+    <div id={props.id} class="page">
       This is a test page
       <Overlay {...packagedProps}/>
     </div>

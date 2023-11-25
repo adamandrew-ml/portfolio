@@ -1,7 +1,7 @@
 
-const Engagements = () => {
+const Engagements = (props) => {
   return (
-    <div id="engagements" class="page">
+    <div id={props.id} class="page">
       Engagements
     </div>
   )

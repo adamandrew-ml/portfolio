@@ -3,7 +3,7 @@ import Overlay from '../components/bank/Overlay'
 import AnalyticsHandler from '../components/specific/AnalyticsHandler'
 import analyticsText from '../data/analytics_text.json'
 
-const Analytics = () => {
+const Analytics = (props) => {
 
   const [overlayOpen,   setOverlayOpen]   = useState(true);
   const [showFilters,   setShowFilters]   = useState(false);
@@ -25,7 +25,7 @@ const Analytics = () => {
   }  
 
   return (
-    <div id="analytics" class="page">
+    <div id={props.id} class="page">
       <Overlay {...packagedProps}/>
       <AnalyticsHandler {...packagedProps}/>
     </div>

@@ -5,7 +5,7 @@ import aboutText from '../data/about_text.json'
 import AboutTechCont from '../components/specific/AboutTechCont'
 
 
-const About = () => {
+const About = (props) => {
 
   const dataProps = {
     "textArray" : aboutText,
@@ -19,7 +19,7 @@ const About = () => {
   }
 
   return (
-    <div id="about" class="page" style={{paddingTop: "120px", width: "80%"}}>
+    <div id={props.id} class="page" style={{paddingTop: "120px", width: "80%"}}>
       <div className="page-content">
         <RenderImageLocal id = "about-img" {...dataProps} {...classProps}/>
         <RenderText {...dataProps}/>

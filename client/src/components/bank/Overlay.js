@@ -4,7 +4,6 @@ import RenderText from './RenderText'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import defaultText from '../../data/default_text.json'
-import '../../styles/Overlay.css'
 
 const Overlay = (props) => {
 
