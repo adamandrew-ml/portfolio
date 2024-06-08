@@ -1,7 +1,0 @@
-[
-  {"value": "About",       "linkout": "#about"},
-  {"value": "Engagements", "linkout": "#engagements"},
-  {"value": "Analytics",   "linkout": "#analytics"},
-  {"value": "Project",     "linkout": "#project"},
-  {"value": "Testing",     "linkout": "#testing"}
-]
