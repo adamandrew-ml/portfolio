@@ -1,0 +1,14 @@
+.borders-on {border: 1px solid red;}
+.bgc-red {background-color: red;}
+
+.width-100 {width: 100px}
+.height-100 {height: 100px}
+
+.flex-center {
+  display: flex;
+  flex-basis: row;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  vertical-align: center;
+}
