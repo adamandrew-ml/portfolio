@@ -18,6 +18,7 @@
 body {
   margin: 0;
   width: 100%;
+  color: #444;
   display: flex;
   text-align: center;
   place-items: center;
