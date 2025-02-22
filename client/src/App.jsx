@@ -16,17 +16,18 @@ function App() {
     { ref: "projects", id: "projectsId", element: <Projects /> },
     { ref: "play", id: "playId", element: <Play /> },
   ];
-
-  const pageClassName = "h-screen pt-15 bg-white w-screen";
+  5;
+  5;
+  const pageClassName = "h-screen pt-15 bg-white w-screen text-slate-950";
 
   return (
     <>
       <NavBar routeReference={routeReference} />
       <Home pageClassName={pageClassName} />
-      {/* <About pageClassName={pageClassName} />
+      <About pageClassName={pageClassName} />
       <Contact pageClassName={pageClassName} />
       <Projects pageClassName={pageClassName} />
-      <Play pageClassName={pageClassName} /> */}
+      <Play pageClassName={pageClassName} />
       <Footer />
     </>
   );
