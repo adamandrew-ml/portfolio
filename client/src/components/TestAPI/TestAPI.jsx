@@ -3,13 +3,10 @@ import { useState } from "react";
 
 const TestAPI = () => {
   const [showName, setShowName] = useState(-1);
-  console.log("TestAPI exists");
+
   const handleGetName = () => {
-    fetch("/api/get_number", {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    console.log(process.env.NODE_ENV);
+    fetch("/api/get_number")
       .then((response) => response.json())
       .then((response) => setShowName(response.number));
   };
