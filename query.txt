@@ -1,0 +1,70 @@
+i have a react app that im trying to dockerise. using the context below, suggest a fix
+
+DOCKERFILE:
+FROM node:18-slim
+ENV PORT=80
+ENV PATH=/frontend-react/node_modules/.bin/$PATH
+ENV NODE_ENV=production
+COPY . /frontend-react
+WORKDIR /frontend-react
+RUN rm -rf node_modules package-lock.json
+RUN npm install --save
+RUN npm run build
+EXPOSE ${PORT}
+CMD ["vite", "--host", "0.0.0.0", "--port", "80"] 
+
+
+ERROR MESSAGE:
+Attaching to backend-flask-1, frontend-react-1
+frontend-react-1  | node:internal/modules/cjs/loader:1143
+frontend-react-1  |   throw err;
+frontend-react-1  |   ^
+frontend-react-1  | 
+frontend-react-1  | Error: Cannot find module '/frontend-react/vite'
+frontend-react-1  |     at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+frontend-react-1  |     at Module._load (node:internal/modules/cjs/loader:981:27)
+frontend-react-1  |     at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+frontend-react-1  |     at node:internal/main/run_main_module:28:49 {
+frontend-react-1  |   code: 'MODULE_NOT_FOUND',
+frontend-react-1  |   requireStack: []
+frontend-react-1  | }
+frontend-react-1  | 
+frontend-react-1  | Node.js v18.20.7
+
+
+
+
+PACKAGE.JSON:
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite": "^6.0.5",
+    "@vitejs/plugin-react": "^4.3.2",
+    "@tailwindcss/vite": "^4.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-pageloom": "^0.1.5",
+    "react-scroll": "^1.9.0",
+    "serve": "^14.2.4",
+    "tailwindcss": "^4.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0"
+  }
+}

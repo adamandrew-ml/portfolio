@@ -1,10 +1,10 @@
-docker build --no-cache -t server-docker .
-docker run -p 5000:5000 server-docker
+docker build --no-cache -t backend-flask .
+docker run -p 5000:5000 backend-flask
 
-docker build --no-cache -t client-docker .
-docker-compose up
+docker build --no-cache -t frontend-react .
+docker run -p 80:80 client-docker
 
-docker run -p 3000:3000 client-docker
+docker-compose up --build
 
 sudo lsof -i :PORT
 

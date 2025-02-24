@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  backend-flask:
+    build: ./backend-flask
+    ports:
+      - "5000:5000"
+  frontend-react:
+    build: ./frontend-react
+    ports:
+      - "80:80"
